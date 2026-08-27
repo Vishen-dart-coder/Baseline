@@ -2,7 +2,7 @@
 
 Single-file landing page for **Baseline**, a members' tennis club & academy. No build step, no framework — one HTML file with inline CSS and vanilla JS.
 
-![Baseline hero section](docs/hero.jpg)
+![Baseline hero section](/hero.jpg)
 
 ## Run it
 

@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Baseline — Tennis Club &amp; Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500&display=swap" rel="stylesheet" />
+<script type="importmap">
+{ "imports": { "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.1.18/+esm" } }
+</script>
+<style>
+:root{
+  --background:#ffffff; --foreground:#0a0a0a;
+  --brand:#2563c9; --brand-deep:#0f2f63; --brand-light:#5790e6;
+  --accent-teal:#0b6e97; --surface:#f4f4f4; --surface-card:#ffffff;
+  --ink:#0a0a0a; --ink-soft:#717784; --ghost:#d7dae1; --hairline:#e6e8ec;
+  --on-brand:#ffffff;
+  --radius-card:1.5rem; --radius-card-lg:2rem; --radius-pill:62.5rem;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px}
+@media (max-width:1920px){html{font-size:0.833333vw}}
+@media (max-width:1440px){html{font-size:1.111111vw}}
+@media (max-width:1024px){html{font-size:1.5625vw}}
+@media (max-width:640px){html{font-size:4.444444vw}}
+img{display:block;max-width:100%}
+button{cursor:pointer;font:inherit;color:inherit;background:none;border:none}
+a{color:inherit;text-decoration:none}
+input,textarea{font:inherit;color:inherit}
+body{min-height:100vh;background:var(--background);color:var(--foreground);font-family:"Onest",system-ui,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid var(--brand-light);outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+main{width:100%;overflow-x:clip;padding:0.5rem}
+@media (min-width:640px){main{padding:0.75rem}}
+.med{font-weight:500}
+
+/* reveal primitives */
+.clip{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:0.14em}
+.clip>span{display:inline-block;transform:translateY(115%);opacity:0;will-change:transform,opacity}
+.clip.go>span{transform:translateY(0);opacity:1}
+.wfade{display:inline-block;transform:translateY(18px);opacity:0}
+.wfade.go{transform:translateY(0);opacity:1}
+
+/* header */
+.hdr{display:flex;align-items:center;padding:1.5rem 1.5rem 0;font-size:0.75rem;color:#fff;position:relative;z-index:20}
+@media (min-width:640px){.hdr{padding:2rem 2.5rem 0}}
+.hdr-nav{display:none;flex:1;gap:2rem}
+@media (min-width:1024px){.hdr-nav{display:flex}}
+.hdr-nav a{color:rgba(255,255,255,.9)}
+.hdr-nav a:hover{color:#fff}
+.brand{display:flex;flex:1;align-items:center;gap:0.5rem;font-size:1rem;font-weight:500;text-transform:uppercase;letter-spacing:.2em}
+@media (min-width:1024px){.brand{justify-content:center}}
+.brand svg{width:1.25rem;height:1.25rem;flex:none}
+.hdr-right{display:flex;flex:1;justify-content:flex-end;align-items:center;gap:1rem}
+@media (min-width:640px){.hdr-right{gap:1.25rem}}
+.booktxt{display:none;text-transform:uppercase;letter-spacing:.08em}
+@media (min-width:640px){.booktxt{display:inline-block}}
+.booktxt:hover{text-decoration:underline}
+.burger{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:var(--radius-pill);background:rgba(255,255,255,.15);backdrop-filter:blur(8px);gap:5px}
+.burger:hover{background:rgba(255,255,255,.25)}
+.burger i{display:block;width:1rem;height:1px;background:#fff}
+
+/* hero */
+.hero{position:relative;isolation:isolate;overflow:hidden;border-radius:var(--radius-card-lg);background:var(--brand-deep);color:#fff;height:calc(100svh - 1rem);min-height:36rem;display:flex;flex-direction:column}
+@media (min-width:640px){.hero{height:calc(100svh - 1.5rem)}}
+.hero-bg{position:absolute;inset:0;z-index:-10;overflow:hidden}
+.hero-plate{position:absolute;left:0;right:0;top:-16%;height:132%;width:100%;will-change:transform}
+.hero-plate img{width:100%;height:100%;object-fit:cover}
+.hero-grad{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,47,99,.65),rgba(15,47,99,.35),rgba(15,47,99,.75))}
+.hero-title-wrap{padding:1rem 1.5rem 0;text-align:center}
+@media (min-width:640px){.hero-title-wrap{padding:1rem 2.5rem 0}}
+.hero-title{font-size:10vw;font-weight:500;text-transform:uppercase;line-height:.85;letter-spacing:-.02em;white-space:nowrap}
+.hero-bottom{margin-top:auto;padding:0 1.5rem 2rem;display:flex;flex-direction:column;gap:1.5rem}
+@media (min-width:640px){.hero-bottom{padding:0 2.5rem 2.5rem;flex-direction:row;justify-content:space-between;align-items:flex-end}}
+.tagline{font-size:2.4rem;font-weight:500;text-transform:uppercase;line-height:.95;letter-spacing:-.02em;color:rgba(255,255,255,.85)}
+.tagline .clip{display:block}
+.hero-cluster{display:flex;align-items:flex-end;gap:1rem}
+.slider{display:none;width:16rem;flex-direction:column;gap:.75rem}
+@media (min-width:768px){.slider{display:flex}}
+.glass{border-radius:var(--radius-card);border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.10);padding:.75rem;box-shadow:0 1.25rem 2.5rem rgba(15,47,99,.2);backdrop-filter:blur(10px)}
+.slide-card{display:flex;gap:.75rem;align-items:center}
+.slide-card img{width:3.5rem;height:3.5rem;border-radius:.75rem;object-fit:cover;flex:none}
+.slide-brand{font-size:.7rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em}
+.slide-title{font-size:.7rem;text-transform:uppercase;opacity:.8;margin-top:.15rem}
+.slide-cta{font-size:.65rem;text-decoration:underline;margin-top:.4rem;display:inline-block}
+.member{width:100%;max-width:20rem;display:flex;gap:.75rem;align-items:stretch}
+@media (min-width:640px){.member{max-width:15rem}}
+.member-col{display:flex;flex-direction:column;justify-content:space-between;flex:1}
+.member-val{font-size:1.875rem;font-weight:500;line-height:1}
+.dots-row{display:flex}
+.dots-row span{width:1.25rem;height:1.25rem;border-radius:var(--radius-pill);border:1px solid rgba(15,47,99,.4);margin-left:-0.5rem}
+.dots-row span:first-child{margin-left:0}
+.member-cap{font-size:.65rem;opacity:.8}
+.member img{width:4rem;aspect-ratio:3/4;object-fit:cover;border-radius:.75rem;flex:none}
+
+/* trust */
+.trust{position:relative;isolation:isolate;overflow:hidden;background:var(--background);padding:4rem 1.5rem}
+@media (min-width:640px){.trust{padding:5rem 2.5rem}}
+.trust-top{position:relative;z-index:20;display:flex;flex-direction:column;gap:2rem}
+@media (min-width:640px){.trust-top{flex-direction:row;justify-content:space-between;align-items:flex-start}}
+.pct{width:7rem;height:7rem;border-radius:var(--radius-pill);background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex:none;padding:0 .6rem}
+@media (min-width:640px){.pct{width:8rem;height:8rem}}
+.pct b{font-size:1.5rem;font-weight:500}
+.pct small{font-size:.6rem;color:var(--ink-soft);max-width:7em;line-height:1.3;margin-top:.25rem}
+.badge-card{display:flex;gap:1rem;max-width:28rem;border-radius:var(--radius-card);background:var(--surface);padding:1.25rem}
+@media (min-width:640px){.badge-card{gap:1.25rem;padding:1.5rem}}
+.chip{border-radius:.75rem;background:var(--background);padding:.5rem 1rem;font-size:1.25rem;font-weight:500;align-self:flex-start}
+.badge-card h3{font-size:1.125rem;font-weight:500}
+.badge-card p{font-size:.75rem;color:var(--ink-soft);line-height:1.65;margin-top:.5rem}
+.ghost-h{position:relative;z-index:0;pointer-events:none;user-select:none;max-width:88rem;margin:3rem auto 0;font-size:8.2vw;font-weight:500;text-transform:uppercase;line-height:1.02;letter-spacing:-.02em;color:var(--ghost)}
+.ghost-row{display:flex;justify-content:space-between}
+.ghost-h .clip{padding-bottom:0.12em}
+.coach-wrap{position:relative;z-index:10;display:flex;justify-content:center;margin-top:-6vw}
+@media (min-width:640px){.coach-wrap{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);margin:0}}
+.coach{width:13rem;transform:rotate(6deg);position:relative;aspect-ratio:3/4;border-radius:var(--radius-card);background:var(--brand);overflow:hidden}
+@media (min-width:640px){.coach{width:16rem}}
+.coach img{width:100%;height:100%;object-fit:cover}
+.coach-cap{position:absolute;left:.75rem;right:.75rem;bottom:.75rem;border-radius:.75rem;background:rgba(15,47,99,.4);color:#fff;backdrop-filter:blur(8px);padding:.5rem .75rem}
+.coach-cap b{display:block;font-size:.875rem;font-weight:500}
+.coach-cap span{font-size:.65rem;opacity:.8}
+.ctrls{position:relative;z-index:20;margin-top:3rem;display:flex;justify-content:space-between;align-items:center}
+@media (min-width:640px){.ctrls{margin-top:6rem}}
+
+/* shared */
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:.22em}
+.eyebrow i{width:.375rem;height:.375rem;border-radius:var(--radius-pill);display:block}
+.eyebrow.dark{color:var(--ink-soft)}.eyebrow.dark i{background:var(--brand)}
+.eyebrow.light{color:rgba(255,255,255,.7)}.eyebrow.light i{background:var(--brand-light)}
+.pill{display:inline-flex;align-items:center;gap:.5rem;border-radius:var(--radius-pill);padding:.875rem 1.75rem;font-size:.875rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em}
+.pill svg{width:1rem;height:1rem}
+.pill.light{background:#fff;color:var(--brand-deep)}
+.pill.light:hover{background:var(--brand-light);color:#fff}
+.pill.solid{background:var(--ink);color:#fff}
+.pill.solid:hover{background:var(--brand-deep)}
+.pill.outline{border:1px solid currentColor;color:var(--ink)}
+.pill.outline:hover{background:var(--ink);color:#fff}
+.abtn{display:grid;place-items:center;width:3rem;height:3rem;border-radius:var(--radius-pill);border:1px solid var(--hairline)}
+@media (min-width:640px){.abtn{width:3.5rem;height:3.5rem}}
+.abtn svg{width:1.25rem;height:1.25rem}
+.abtn.outline{color:var(--ink);background:transparent}
+.abtn.outline:hover{border-color:var(--ink)}
+.abtn.solid{background:var(--ink);border-color:var(--ink);color:#fff}
+.abtn.solid:hover{background:var(--brand-deep)}
+.cdots{display:flex;gap:.5rem;align-items:center}
+.cdots button{padding:.375rem}
+.cdots i{display:block;height:.375rem;width:.375rem;border-radius:var(--radius-pill);transition:width .3s ease,background .3s ease}
+.cdots.dark i{background:var(--ghost)}
+.cdots.dark [aria-current="true"] i{background:var(--ink);width:1.25rem}
+.cdots.light i{background:rgba(255,255,255,.4)}
+.cdots.light [aria-current="true"] i{background:#fff;width:1.25rem}
+
+/* programs */
+.programs{background:var(--surface);padding:6rem 1.5rem}
+@media (min-width:640px){.programs{padding:6rem 2.5rem}}
+.h-stack{font-size:3rem;font-weight:500;line-height:.95;letter-spacing:-.02em;margin-top:1rem}
+.h-stack .clip{display:block}
+.prog-list{margin-top:3.5rem}
+.prog-row{display:block;border-top:1px solid var(--hairline)}
+.prog-row:last-child{border-bottom:1px solid var(--hairline)}
+.prog-row:focus-visible{background:var(--background)}
+.prog-inner{display:flex;gap:1.5rem;align-items:center;padding:1.75rem 0}
+.prog-num{width:2.5rem;font-size:.875rem;font-weight:500;color:var(--ink-soft);flex:none}
+.prog-name{font-size:1.5rem;font-weight:500;letter-spacing:-.02em}
+@media (min-width:640px){.prog-name{font-size:1.875rem}}
+.prog-desc{font-size:.875rem;color:var(--ink-soft);margin-top:.25rem}
+.prog-arrow{margin-left:auto;flex:none;display:grid;place-items:center;width:2.75rem;height:2.75rem;border-radius:var(--radius-pill);border:1px solid var(--hairline);opacity:.55}
+.prog-arrow svg{width:1rem;height:1rem}
+
+/* facilities */
+.facilities{background:var(--background);border-radius:var(--radius-card-lg);margin-top:-2.5rem;padding:4rem 1.5rem 5rem;position:relative}
+@media (min-width:640px){.facilities{padding:4rem 2.5rem 5rem}}
+.fac-grid{display:grid;grid-template-columns:1fr;align-items:end;gap:2.5rem}
+@media (min-width:768px){.fac-grid{grid-template-columns:1fr 1fr}}
+.fac-intro{max-width:24rem}
+.fac-icon{width:4rem;height:4rem;border-radius:var(--radius-card);object-fit:cover}
+.fac-body{font-size:.875rem;color:var(--ink-soft);max-width:20rem;margin-top:1.5rem;line-height:1.7}
+.court-cards{display:flex;align-items:flex-end;gap:1.25rem}
+.court{flex:1;position:relative;aspect-ratio:3/4;border-radius:var(--radius-card);overflow:hidden;background:var(--surface)}
+.court:nth-child(2){margin-bottom:2rem}
+.court img{width:100%;height:100%;object-fit:cover;will-change:transform}
+.court-cap{position:absolute;left:.75rem;right:.75rem;bottom:.75rem;border-radius:.75rem;backdrop-filter:blur(8px);color:#fff;padding:.75rem 1rem}
+.court-cap.clay{background:rgba(15,47,99,.4)}
+.court-cap.blue{background:rgba(11,110,151,.55)}
+.court-cap b{display:block;font-size:.875rem;font-weight:500}
+.court-cap span{font-size:.65rem;opacity:.85}
+
+/* stats */
+.stats{background:var(--brand-deep);color:#fff;border-radius:var(--radius-card-lg);margin-top:.75rem;padding:5rem 1.5rem}
+@media (min-width:640px){.stats{padding:5rem 2.5rem}}
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);column-gap:2rem;row-gap:3rem;margin-top:4rem}
+@media (min-width:1024px){.stat-grid{grid-template-columns:repeat(4,1fr)}}
+.stat{border-top:1px solid rgba(255,255,255,.2);padding-top:1.25rem}
+.stat b{display:block;font-size:3.75rem;font-weight:500;letter-spacing:-.02em;line-height:1}
+@media (min-width:640px){.stat b{font-size:4.5rem}}
+.stat span{display:block;font-size:.875rem;color:rgba(255,255,255,.65);margin-top:.75rem}
+
+/* testimonials */
+.testi{background:var(--background);padding:5rem 1.5rem}
+@media (min-width:640px){.testi{padding:6rem 2.5rem}}
+.testi-grid{display:grid;grid-template-columns:1fr;gap:1.25rem;margin-top:3.5rem}
+@media (min-width:768px){.testi-grid{grid-template-columns:repeat(3,1fr)}}
+.tcard{display:flex;flex-direction:column;justify-content:space-between;height:100%;border-radius:var(--radius-card);background:var(--surface);padding:1.75rem;will-change:transform}
+.tquote{font-size:2.25rem;color:var(--brand);line-height:1}
+.tcard p{font-size:1.125rem;line-height:1.65;color:var(--ink);margin-top:1rem}
+.tfoot{border-top:1px solid var(--hairline);padding-top:1rem;margin-top:1.5rem}
+.tfoot b{font-weight:500}
+.tfoot span{display:block;font-size:.875rem;color:var(--ink-soft)}
+
+/* footer */
+.foot{background:var(--brand-deep);color:#fff;border-radius:var(--radius-card-lg);margin-top:.75rem;padding:3.5rem 1.5rem}
+@media (min-width:640px){.foot{padding:4rem 2.5rem}}
+.foot-cta{border-bottom:1px solid rgba(255,255,255,.15);padding-bottom:3.5rem;display:flex;flex-direction:column;gap:2rem}
+@media (min-width:640px){.foot-cta{flex-direction:row;justify-content:space-between;align-items:flex-end}}
+.foot-cta h2{font-size:3.75rem;font-weight:500;line-height:.92;letter-spacing:-.02em;margin-top:1rem}
+.foot-cta h2 .clip{display:block}
+.foot-cols{display:grid;grid-template-columns:1fr;gap:2.5rem;padding:3.5rem 0}
+@media (min-width:768px){.foot-cols{grid-template-columns:1.4fr 1fr 1fr 1fr}}
+.foot-brand{max-width:20rem}
+.foot-brand .brand{font-size:1.125rem;flex:none;justify-content:flex-start}
+.foot-blurb{font-size:.875rem;color:rgba(255,255,255,.65);margin-top:1rem;line-height:1.6}
+address{font-style:normal;margin-top:1.5rem;color:rgba(255,255,255,.8);font-size:.875rem;display:flex;flex-direction:column;gap:.35rem}
+address .muted{color:rgba(255,255,255,.55)}
+.foot-cols h3{font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:.2em;color:rgba(255,255,255,.5)}
+.foot-cols ul{list-style:none;font-size:.875rem;color:rgba(255,255,255,.8);margin-top:1rem;display:flex;flex-direction:column;gap:.75rem}
+.foot-cols ul a:hover{color:#fff}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.15);padding-top:2rem;font-size:.875rem;color:rgba(255,255,255,.6);display:flex;flex-direction:column;gap:1.25rem}
+@media (min-width:640px){.foot-bottom{flex-direction:row;justify-content:space-between;align-items:center}}
+.foot-bottom nav{display:flex;gap:1.25rem}
+
+/* modal + menu */
+.modal{position:fixed;inset:0;z-index:90;display:flex;align-items:flex-end;justify-content:center;padding:.75rem;pointer-events:none}
+@media (min-width:640px){.modal{align-items:center;padding:1.5rem}}
+.modal.open{pointer-events:auto}
+.modal-bd{position:absolute;inset:0;background:rgba(15,47,99,.4);backdrop-filter:blur(6px);opacity:0}
+.modal-panel{position:relative;width:100%;max-height:92svh;overflow-y:auto;border-radius:var(--radius-card-lg);background:var(--surface-card);color:var(--ink);padding:1.5rem;box-shadow:0 2rem 5rem rgba(15,47,99,.35);opacity:0}
+@media (min-width:640px){.modal-panel{max-width:32rem;padding:2rem}}
+.modal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.modal-head h2{font-size:2.25rem;font-weight:500;line-height:.95;letter-spacing:-.02em;margin-top:.75rem}
+@media (min-width:640px){.modal-head h2{font-size:3rem}}
+.modal-head h2 .clip{display:block}
+.iconbtn{display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:var(--radius-pill);background:var(--surface);flex:none}
+.iconbtn:hover{background:var(--hairline)}
+.iconbtn svg{width:1.25rem;height:1.25rem}
+form.cf{margin-top:1.75rem;display:flex;flex-direction:column;gap:1rem}
+.cf label{display:block;font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:.18em;color:var(--ink-soft);margin-bottom:.5rem}
+.cf input,.cf textarea{width:100%;border-radius:.75rem;border:1px solid var(--hairline);background:var(--background);padding:.75rem 1rem;font-size:.875rem;resize:vertical}
+.cf input:focus,.cf textarea:focus{outline:none;border-color:var(--brand-light);box-shadow:0 0 0 2px var(--brand-light)}
+.cf button[type=submit]{align-self:flex-start;border-radius:var(--radius-pill);background:var(--ink);color:#fff;padding:.875rem 1.75rem;font-size:.875rem;font-weight:500;text-transform:uppercase;letter-spacing:.08em}
+.cf button[type=submit]:hover{background:var(--brand-deep)}
+.cf button[disabled]{opacity:.6;cursor:default}
+.success{margin-top:2rem;border-radius:var(--radius-card);background:var(--surface);padding:1.5rem;text-align:center}
+.success .tick{width:3rem;height:3rem;border-radius:var(--radius-pill);background:var(--brand);display:grid;place-items:center;margin:0 auto 1rem}
+.success .tick svg{width:1.25rem;height:1.25rem;color:#fff}
+.success h3{font-size:1.125rem;font-weight:500}
+.success p{font-size:.875rem;color:var(--ink-soft);margin:.5rem 0 1.25rem}
+.menu{position:fixed;inset:0;z-index:70;display:flex;flex-direction:column;pointer-events:none}
+.menu.open{pointer-events:auto}
+.menu-bd{position:absolute;inset:0;background:var(--brand-deep);opacity:0}
+.menu-panel{position:relative;flex:1;display:flex;flex-direction:column;color:#fff;padding:.5rem;opacity:0}
+@media (min-width:640px){.menu-panel{padding:.75rem}}
+.menu-inner{flex:1;display:flex;flex-direction:column;padding:1.5rem}
+@media (min-width:640px){.menu-inner{padding:2.5rem}}
+.menu-top{display:flex;justify-content:space-between;align-items:center}
+.menu-top .brand{flex:none}
+.menu-top .iconbtn{background:rgba(255,255,255,.15)}
+.menu-top .iconbtn:hover{background:rgba(255,255,255,.25)}
+.menu-nav{flex:1;display:flex;flex-direction:column;justify-content:center;gap:.5rem}
+.menu-nav a{display:block;font-size:3rem;font-weight:500;letter-spacing:-.02em;opacity:0}
+@media (min-width:640px){.menu-nav a{font-size:4.5rem}}
+.menu-nav a:hover{color:var(--brand-light)}
+.menu-bot{border-top:1px solid rgba(255,255,255,.15);padding-top:2rem;display:flex;flex-direction:column;gap:1.25rem}
+@media (min-width:640px){.menu-bot{flex-direction:row;justify-content:space-between;align-items:center}}
+.menu-bot nav{display:flex;gap:1.25rem;color:rgba(255,255,255,.7);font-size:.875rem}
+.menu-bot nav a:hover{color:#fff}
+
+/* loader */
+.loader{position:fixed;inset:0;z-index:200;background:var(--brand-deep);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2rem;will-change:transform}
+.loader .wm{display:flex;align-items:center;gap:.5rem;font-size:1.5rem;font-weight:500;text-transform:uppercase;letter-spacing:.2em;opacity:0}
+.loader .wm svg{width:1.75rem;height:1.75rem}
+.track{width:10rem;height:1px;border-radius:var(--radius-pill);background:rgba(255,255,255,.2);overflow:hidden}
+.track i{display:block;height:100%;background:#fff;transform:scaleX(0);transform-origin:left}
+html.locked{position:relative;overflow:hidden;height:100%}
+</style>
+</head>
+<body>
+<main id="mainContent">
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-bg">
+      <div class="hero-plate" id="heroPlate">
+        <img src="https://api.getlayers.ai/storage/v1/object/public/public/assets/baseline-88535e4000/hero/hero-court.webp" alt="Player lunging for a shot on a hard court" fetchpriority="high" loading="eager">
+      </div>
+      <div class="hero-grad"></div>
+    </div>
+
+    <header class="hdr">
+      <nav class="hdr-nav">
+        <a href="#programs">Programs &amp; Coaches</a>
+        <a href="#facilities">Club &amp; Events</a>
+      </nav>
+      <a href="#top" class="brand">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M4.5 5.5c3.6 2.2 5.2 6.6 4.2 11M19.5 5.5c-3.6 2.2-5.2 6.6-4.2 11"/></svg>
+        <span>Baseline</span>
+      </a>
+      <div class="hdr-right">
+        <button class="booktxt" data-open-modal>Book a Visit</button>
+        <button class="burger" aria-label="Open menu" id="burger"><i></i><i></i></button>
+      </div>
+    </header>
+
+    <div class="hero-title-wrap">
+      <h1 class="hero-title" id="heroTitle" data-text="Own The Court"></h1>
+    </div>
+
+    <div class="hero-bottom">
+      <p class="tagline" id="heroTag"></p>
+      <div class="hero-cluster">
+        <div class="slider" id="slider">
+          <div class="glass slide-card" id="slideCard"></div>
+          <div class="cdots light" id="slideDots"></div>
+        </div>
+        <div class="glass member" id="memberCard">
+          <div class="member-col">
+            <span class="member-val">9K+</span>
+            <div class="dots-row"><span style="background:#5790e6"></span><span style="background:#c2e029"></span><span style="background:#0b6e97"></span><span style="background:#ffffff"></span></div>
+            <span class="member-cap">Members on court</span>
+          </div>
+          <img src="https://api.getlayers.ai/storage/v1/object/public/public/assets/baseline-88535e4000/1.webp" alt="Player waiting to return on a clay court" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust" id="trust">
+    <div class="trust-top">
+      <div class="pct" data-inview='{"opacity":0,"scale":0.9}' data-to='{"opacity":1,"scale":1}' data-cfg="220,22">
+        <b>100%</b><small>Coaching built around your game</small>
+      </div>
+      <div class="badge-card" data-inview='{"opacity":0,"y":24}' data-to='{"opacity":1,"y":0}' data-cfg="200,26" data-delay="120">
+        <div class="chip">#01</div>
+        <div>
+          <h3>Trusted by serious players</h3>
+          <p>From first-timers to nationally ranked juniors, players train here because the progress shows up on the scoreboard.</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="ghost-h" id="ghostH">
+      <div class="ghost-row"><span class="gw" data-i="0"></span><span class="gw" data-i="1"></span></div>
+      <div class="ghost-row"><span class="gw" data-i="2" style="color:var(--ink)"></span><span class="gw" data-i="3"></span></div>
+    </h2>
+
+    <div class="coach-wrap" data-inview='{"opacity":0,"y":60,"scale":0.92}' data-to='{"opacity":1,"y":0,"scale":1}' data-cfg="170,26">
+      <figure class="coach">
+        <img id="coachImg" src="" alt="" loading="lazy">
+        <figcaption class="coach-cap"><b id="coachName"></b><span id="coachRole"></span></figcaption>
+      </figure>
+    </div>
+
+    <div class="ctrls">
+      <button class="abtn outline" id="trustPrev" aria-label="Previous coach">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="transform:scaleX(-1)"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+      <div class="cdots dark" id="trustDots"></div>
+      <button class="abtn solid" id="trustNext" aria-label="Next coach">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- PROGRAMS -->
+  <section class="programs" id="programs">
+    <span class="eyebrow dark"><i></i>Training programs</span>
+    <h2 class="h-stack" data-lines="Built for|every level"></h2>
+    <div class="prog-list" id="progList"></div>
+  </section>
+
+  <!-- FACILITIES -->
+  <section class="facilities" id="facilities">
+    <div class="fac-grid">
+      <div class="fac-intro">
+        <img class="fac-icon" src="https://api.getlayers.ai/storage/v1/object/public/public/assets/baseline-88535e4000/3.webp" alt="Player stretching for a forehand on clay" loading="lazy" data-inview='{"opacity":0,"scale":0.85}' data-to='{"opacity":1,"scale":1}' data-cfg="240,20">
+        <h2 class="h-stack" data-lines="Tour Our|World-Class|Courts" data-stagger="120" style="margin-top:1.5rem"></h2>
+        <p class="fac-body" id="facBody">Reserve a court for focused practice, squad drills, or private sessions — and train in the same conditions you'll compete in.</p>
+      </div>
+      <div class="court-cards">
+        <figure class="court" data-inview='{"opacity":0,"y":48}' data-to='{"opacity":1,"y":0}' data-cfg="180,26" data-delay="0" data-hoverscale>
+          <img src="https://api.getlayers.ai/storage/v1/object/public/public/assets/baseline-88535e4000/1.webp" alt="Player on the baseline of an outdoor clay court" loading="lazy">
+          <figcaption class="court-cap clay"><b>Redline Clay</b><span>A fast outdoor clay court tuned for long, physical rallies.</span></figcaption>
+        </figure>
+        <figure class="court" data-inview='{"opacity":0,"y":48}' data-to='{"opacity":1,"y":0}' data-cfg="180,26" data-delay="140" data-hoverscale>
+          <img src="https://api.getlayers.ai/storage/v1/object/public/public/assets/baseline-88535e4000/4.webp" alt="Player following through on a blue hard court" loading="lazy">
+          <figcaption class="court-cap blue"><b>Harbor Court</b><span>A sheltered hard court built for precision and night play.</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <span class="eyebrow light"><i></i>By the numbers</span>
+    <h2 class="h-stack" data-lines="A club that|keeps score"></h2>
+    <dl class="stat-grid" id="statGrid"></dl>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testi" id="testimonials">
+    <span class="eyebrow dark"><i></i>What players say</span>
+    <h2 class="h-stack" data-lines="Loved by|the locker room"></h2>
+    <div class="testi-grid" id="testiGrid"></div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot" id="contact">
+    <div class="foot-cta">
+      <div>
+        <span class="eyebrow light"><i></i>Get started</span>
+        <h2 data-lines="Ready to|play?"></h2>
+      </div>
+      <button class="pill light" data-open-modal data-inview='{"opacity":0,"y":20}' data-to='{"opacity":1,"y":0}' data-cfg="200,24" data-delay="150">
+        Book a Visit
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+    <div class="foot-cols">
+      <div class="foot-brand">
+        <div class="brand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M4.5 5.5c3.6 2.2 5.2 6.6 4.2 11M19.5 5.5c-3.6 2.2-5.2 6.6-4.2 11"/></svg>
+          <span>Baseline</span>
+        </div>
+        <p class="foot-blurb">A members' tennis club and academy where focused coaching meets championship courts.</p>
+        <address>
+          <a href="mailto:play@baseline.club">play@baseline.club</a>
+          <a href="tel:+12125550148">+1 (212) 555-0148</a>
+          <span class="muted">120 Court Lane, New York</span>
+        </address>
+      </div>
+      <nav><h3>Programs</h3><ul>
+        <li><a href="#junior">Junior Development</a></li><li><a href="#performance">Performance Squad</a></li>
+        <li><a href="#adult">Adult Clinics</a></li><li><a href="#private">Private Coaching</a></li></ul></nav>
+      <nav><h3>Club</h3><ul>
+        <li><a href="#membership">Membership</a></li><li><a href="#facilities">Facilities</a></li>
+        <li><a href="#club">Events</a></li><li><a href="#shop">Pro Shop</a></li></ul></nav>
+      <nav><h3>Company</h3><ul>
+        <li><a href="#about">About</a></li><li><a href="#programs">Coaches</a></li>
+        <li><a href="#careers">Careers</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Baseline Tennis Club. All rights reserved.</span>
+      <nav aria-label="Social"><a href="#instagram">Instagram</a><a href="#x">X</a><a href="#youtube">YouTube</a><a href="#linkedin">LinkedIn</a></nav>
+      <nav aria-label="Legal"><a href="#privacy">Privacy</a><a href="#terms">Terms</a></nav>
+    </div>
+  </footer>
+</main>
+
+<!-- MENU OVERLAY -->
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Site menu" aria-hidden="true">
+  <div class="menu-bd" data-close-menu></div>
+  <div class="menu-panel">
+    <div class="menu-inner">
+      <div class="menu-top">
+        <div class="brand">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M4.5 5.5c3.6 2.2 5.2 6.6 4.2 11M19.5 5.5c-3.6 2.2-5.2 6.6-4.2 11"/></svg>
+          <span>Baseline</span>
+        </div>
+        <button class="iconbtn" aria-label="Close menu" data-close-menu>
+          <svg class="xicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </div>
+      <nav class="menu-nav" id="menuNav">
+        <a href="#programs">Programs</a><a href="#facilities">Facilities</a>
+        <a href="#testimonials">Reviews</a><a href="#contact">Contact</a>
+      </nav>
+      <div class="menu-bot">
+        <button class="pill light" id="menuBook">Book a Visit
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+        <nav aria-label="Social"><a href="#instagram">Instagram</a><a href="#x">X</a><a href="#youtube">YouTube</a><a href="#linkedin">LinkedIn</a></nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT MODAL -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal-bd" data-close-modal></div>
+  <div class="modal-panel" role="dialog" aria-modal="true" aria-label="Book a visit">
+    <div class="modal-head">
+      <div>
+        <span class="eyebrow dark"><i></i>Book a visit</span>
+        <h2 data-lines="Come see|the courts" data-stagger="90" data-dur="800"></h2>
+      </div>
+      <button class="iconbtn" aria-label="Close" data-close-modal>
+        <svg class="xicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+    <form class="cf" id="cform" novalidate>
+      <div><label for="f-name">Full name</label><input id="f-name" name="name" type="text" placeholder="Alex Rivera"></div>
+      <div><label for="f-email">Email</label><input id="f-email" name="email" type="email" placeholder="you@email.com"></div>
+      <div><label for="f-msg">What would you like to play?</label><textarea id="f-msg" name="msg" rows="3" placeholder="I'd love to try a private lesson on the clay courts…"></textarea></div>
+      <button type="submit" id="csubmit">Request a visit</button>
+    </form>
+    <div class="success" id="csuccess" hidden>
+      <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></div>
+      <h3>Request received</h3>
+      <p id="cmsg"></p>
+      <button class="pill solid" data-close-modal>Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="wm" id="loaderWm">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M4.5 5.5c3.6 2.2 5.2 6.6 4.2 11M19.5 5.5c-3.6 2.2-5.2 6.6-4.2 11"/></svg>
+    <span>Baseline</span>
+  </div>
+  <div class="track"><i id="loaderFill"></i></div>
+</div>
+
+<script type="module">
+import Lenis from "lenis";
+
+/* ---------- config ---------- */
+const BASE = "https://api.getlayers.ai/storage/v1/object/public/public/assets/baseline-88535e4000";
+const FONT_BASE = 16, BASE_W = 1920, COEF = 0.6666;
+const MIN_VISIBLE_MS = 1400, MAX_VISIBLE_MS = 2600, EXIT_MS = 850;
+const EASE = {
+  easeOutExpo: "cubic-bezier(0.16,1,0.3,1)",
+  easeOutQuart: "cubic-bezier(0.25,1,0.5,1)",
+  easeInOutCubic: "cubic-bezier(0.65,0,0.35,1)"
+};
+const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const canHover = () => innerWidth > 768;
+
+/* ---------- adaptive rem ---------- */
+function setRootFont(){
+  const reduction = ((BASE_W - innerWidth) / BASE_W) * 100 * COEF;
+  const size = FONT_BASE - (FONT_BASE * reduction) / 100;
+  if (size > FONT_BASE) document.documentElement.style.fontSize = size + "px";
+  else document.documentElement.style.removeProperty("font-size");
+}
+setRootFont(); addEventListener("resize", setRootFont);
+
+/* ---------- lenis ---------- */
+window.scrollTo(0,0);
+const lenis = new Lenis({ smoothWheel:true });
+function raf(t){ lenis.raf(t); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+let locks = 0;
+function lock(){ locks++; lenis.stop(); document.documentElement.classList.add("locked"); }
+function unlock(){ locks = Math.max(0, locks-1); if(!locks){ lenis.start(); document.documentElement.classList.remove("locked"); } }
+lock(); // loader
+
+/* ---------- spring engine ---------- */
+const springs = new Set();
+class Spring {
+  constructor(el, from, to, cfg, apply){
+    this.el = el; this.cfg = cfg; this.apply = apply;
+    this.keys = Object.keys(to);
+    this.x = {}; this.v = {}; this.t = {};
+    for (const k of this.keys){ this.x[k] = from[k] ?? to[k]; this.v[k] = 0; this.t[k] = from[k] ?? to[k]; }
+    this.render(); springs.add(this);
+  }
+  to(target){ for (const k in target) this.t[k] = target[k]; this.active = true; }
+  step(dt){
+    let moving = false;
+    for (const k of this.keys){
+      const d = this.x[k] - this.t[k];
+      if (Math.abs(d) < 0.0005 && Math.abs(this.v[k]) < 0.0005){ this.x[k] = this.t[k]; this.v[k] = 0; continue; }
+      moving = true;
+      this.v[k] += (-this.cfg.tension * d - this.cfg.friction * this.v[k]) * dt;
+      this.x[k] += this.v[k] * dt;
+    }
+    if (moving) this.render();
+    return moving;
+  }
+  render(){ this.apply(this.x, this.el); }
+}
+const transformApply = (v, el) => {
+  const parts = [];
+  if ("x" in v) parts.push(`translateX(${v.x}${v.xUnit||"px"})`);
+  if ("y" in v) parts.push(`translateY(${v.y}px)`);
+  if ("scale" in v) parts.push(`scale(${v.scale})`);
+  if ("rotate" in v) parts.push(`rotate(${v.rotate}deg)`);
+  if (parts.length) el.style.transform = parts.join(" ");
+  if ("opacity" in v) el.style.opacity = v.opacity;
+};
+let last = performance.now();
+function tick(now){
+  const dt = Math.min(0.032, (now - last) / 1000); last = now;
+  for (const s of springs) s.step(dt);
+  parallaxFrame();
+  requestAnimationFrame(tick);
+}
+requestAnimationFrame(tick);
+
+function mkSpring(el, from, to, cfg, apply){ return new Spring(el, from, to, {tension:cfg[0], friction:cfg[1]}, apply || transformApply); }
+
+/* ---------- text reveal primitives ---------- */
+function wordClips(el, text, opts={}){
+  el.textContent = "";
+  const words = text.split(" ");
+  const nodes = words.map((w,i)=>{
+    const clip = document.createElement("span");
+    clip.className = "clip";
+    if (opts.padBottom) clip.style.paddingBottom = opts.padBottom;
+    const inner = document.createElement("span");
+    inner.textContent = w;
+    clip.appendChild(inner);
+    el.appendChild(clip);
+    if (i < words.length-1) el.appendChild(document.createTextNode(" "));
+    return {clip, inner};
+  });
+  return nodes;
+}
+function playClips(nodes, {stagger=120, base=0, dur=950, ease=EASE.easeOutExpo}={}){
+  nodes.forEach((n,i)=>{
+    n.clip.classList.remove("go");
+    n.inner.style.transition = "none";
+    void n.inner.offsetWidth;
+    n.inner.style.transition = `transform ${RM?0:dur}ms ${ease} ${RM?0:base + i*stagger}ms, opacity ${RM?0:dur}ms ${ease} ${RM?0:base + i*stagger}ms`;
+    requestAnimationFrame(()=> n.clip.classList.add("go"));
+  });
+}
+function stackedLines(el, lines, opts={}){
+  el.textContent = "";
+  const nodes = lines.map(l=>{
+    const clip = document.createElement("span");
+    clip.className = "clip";
+    const inner = document.createElement("span");
+    inner.textContent = l;
+    clip.appendChild(inner); el.appendChild(clip);
+    return {clip, inner};
+  });
+  return nodes;
+}
+
+/* build all data-lines headings */
+const stackedEls = [];
+document.querySelectorAll("[data-lines]").forEach(el=>{
+  const nodes = stackedLines(el, el.dataset.lines.split("|"));
+  stackedEls.push({el, nodes, stagger:+(el.dataset.stagger||120), dur:+(el.dataset.dur||950)});
+});
+function playStacked(el){
+  const s = stackedEls.find(s=>s.el===el);
+  if (s) playClips(s.nodes, {stagger:s.stagger, dur:s.dur});
+}
+/* stacked headings inside page reveal on view */
+stackedEls.forEach(s=>{
+  if (s.el.closest("#modal")) return;
+  const io = new IntersectionObserver(en=>{
+    if (en[0].isIntersecting){ playClips(s.nodes, {stagger:s.stagger, dur:s.dur}); io.disconnect(); }
+  }, {threshold:0.2});
+  io.observe(s.el);
+});
+
+/* ---------- Inview spring reveals ---------- */
+document.querySelectorAll("[data-inview]").forEach(el=>{
+  const from = JSON.parse(el.dataset.inview), to = JSON.parse(el.dataset.to);
+  const cfg = el.dataset.cfg.split(",").map(Number);
+  const delay = +(el.dataset.delay||0);
+  const sp = mkSpring(el, from, to, cfg);
+  const io = new IntersectionObserver(en=>{
+    if (en[0].isIntersecting){
+      setTimeout(()=> sp.to(to), RM?0:delay);
+      io.disconnect();
+    }
+  }, {threshold:0.15});
+  io.observe(el);
+});
+
+/* ---------- hover spring helper ---------- */
+function hover(trigger, el, from, to, cfg, apply){
+  const sp = mkSpring(el, from, from, cfg, apply);
+  trigger.addEventListener("pointerenter", ()=>{ if(canHover()) sp.to(to); });
+  trigger.addEventListener("pointerleave", ()=> sp.to(from));
+  trigger.addEventListener("focus", ()=> sp.to(to));
+  trigger.addEventListener("blur", ()=> sp.to(from));
+}
+
+/* ---------- parallax ---------- */
+const parallaxItems = [];
+function addParallax(el, from, to, unit, section){
+  parallaxItems.push({el, from, to, unit, section: section || el.closest("section")});
+}
+function parallaxFrame(){
+  const vh = innerHeight;
+  for (const p of parallaxItems){
+    const r = p.section.getBoundingClientRect();
+    let t = (vh - r.top) / (vh + r.height);
+    t = Math.min(1, Math.max(0, t));
+    const val = p.from + (p.to - p.from) * t;
+    p.el.style.transform = `translate${p.unit==="x"?"X":"Y"}(${val}%)`;
+  }
+}
+addParallax(document.getElementById("heroPlate"), 0, 12, "y");
+
+/* ---------- hero content ---------- */
+const heroTitleEl = document.getElementById("heroTitle");
+const heroTitleNodes = wordClips(heroTitleEl, "Own The Court");
+const heroTagEl = document.getElementById("heroTag");
+const heroTagNodes = stackedLines(heroTagEl, ["Show Up,", "Level Up"]);
+
+/* collection slider */
+const collections = [
+  {img:`https://api.getlayers.ai/storage/v1/object/public/public/assets/baseline-88535e4000/2.webp`, brand:"Baseline Pro", title:"Featured Gear", cta:"Shop the kit", alt:"Player driving a backhand on a hard court"},
+  {img:`https://api.getlayers.ai/storage/v1/object/public/public/assets/baseline-88535e4000/3.webp`, brand:"Court Series", title:"Summer Drop", cta:"View the line", alt:"Player stretching for a forehand on clay"},
+  {img:`https://api.getlayers.ai/storage/v1/object/public/public/assets/baseline-88535e4000/5.webp`, brand:"Academy Kit", title:"Junior Range", cta:"Browse juniors", alt:"Player set in a ready stance on clay"}
+];
+const slideCard = document.getElementById("slideCard");
+const slideDots = document.getElementById("slideDots");
+let slideIdx = 0;
+const slideSpring = mkSpring(slideCard, {opacity:1,y:0,scale:1}, {opacity:1,y:0,scale:1}, [210,24]);
+function renderSlide(i){
+  const c = collections[i];
+  slideCard.innerHTML = `<img src="${c.img}" alt="${c.alt}" loading="lazy">
+    <div><div class="slide-brand">${c.brand}</div><div class="slide-title">${c.title}</div>
+    <a class="slide-cta" href="#shop">${c.cta} →</a></div>`;
+  renderDots(slideDots, collections.length, i, setSlide, "light");
+}
+function setSlide(i){
+  slideIdx = (i + collections.length) % collections.length;
+  slideSpring.to({opacity:0,y:16,scale:0.96});
+  setTimeout(()=>{ renderSlide(slideIdx); slideSpring.to({opacity:1,y:0,scale:1}); }, 260);
+}
+function renderDots(host, n, active, onPick, tone){
+  host.innerHTML = "";
+  for (let i=0;i<n;i++){
+    const b = document.createElement("button");
+    b.type="button"; b.setAttribute("aria-label",`Go to slide ${i+1}`);
+    if (i===active) b.setAttribute("aria-current","true");
+    b.innerHTML = "<i></i>";
+    b.addEventListener("click", ()=> onPick(i));
+    host.appendChild(b);
+  }
+}
+renderSlide(0);
+
+/* slider + membership inview (gated on ready) */
+const sliderEl = document.getElementById("slider");
+const memberEl = document.getElementById("memberCard");
+const sliderSp = mkSpring(sliderEl, {opacity:0,y:28}, {opacity:1,y:0}, [200,26]);
+const memberSp = mkSpring(memberEl, {opacity:0,y:28}, {opacity:1,y:0}, [200,26]);
+
+/* ---------- trust carousel ---------- */
+const trustSlides = [
+  {headline:["Expert","Result-","Driven","Coaching"], img:`https://api.getlayers.ai/storage/v1/object/public/public/assets/baseline-88535e4000/5.webp`, name:"Marco Vidal", role:"Head Coach", alt:"Head coach set in a ready stance on clay"},
+  {headline:["Sharper","Faster","Stronger","Player"], img:`https://api.getlayers.ai/storage/v1/object/public/public/assets/baseline-88535e4000/4.webp`, name:"Elena Sokolova", role:"Performance Coach", alt:"Performance coach following through on a serve"},
+  {headline:["Future","Champions","Start","Here"], img:`https://api.getlayers.ai/storage/v1/object/public/public/assets/baseline-88535e4000/1.webp`, name:"James Okoro", role:"Juniors Lead", alt:"Juniors lead waiting to return on clay"}
+];
+const gwEls = [...document.querySelectorAll(".gw")];
+const coachImg = document.getElementById("coachImg");
+const coachSp = mkSpring(coachImg, {opacity:0}, {opacity:1}, [260,26], (v,el)=>{ el.style.opacity = v.opacity; });
+const trustDots = document.getElementById("trustDots");
+let trustIdx = 0, ghostNodes = [];
+
+const ghostParallax = [[-3,3],[3,-3],[-2,4],[4,-3]];
+gwEls.forEach((el,i)=>{
+  const inner = document.createElement("span");
+  el.appendChild(inner);
+  addParallax(el, ghostParallax[i][0], ghostParallax[i][1], "x", document.getElementById("trust"));
+});
+function renderTrust(i, animate=true){
+  const s = trustSlides[i];
+  ghostNodes = gwEls.map((el, wi)=>{
+    const nodes = wordClips(el, s.headline[wi], {padBottom:"0.12em"});
+    return nodes[0];
+  });
+  if (animate) ghostNodes.forEach((n,wi)=> playClips([n], {stagger:0, base:wi*70, dur:700}));
+  coachImg.src = s.img; coachImg.alt = s.alt;
+  document.getElementById("coachName").textContent = s.name;
+  document.getElementById("coachRole").textContent = s.role;
+  coachSp.x.opacity = 0; coachSp.to({opacity:1});
+  renderDots(trustDots, trustSlides.length, i, setTrust, "dark");
+}
+function setTrust(i){ trustIdx = (i + trustSlides.length) % trustSlides.length; renderTrust(trustIdx); }
+renderTrust(0, false);
+document.getElementById("trustPrev").addEventListener("click", ()=> setTrust(trustIdx-1));
+document.getElementById("trustNext").addEventListener("click", ()=> setTrust(trustIdx+1));
+new IntersectionObserver((en,io)=>{ if(en[0].isIntersecting){ renderTrust(trustIdx); io.disconnect(); } },{threshold:0.2})
+  .observe(document.getElementById("ghostH"));
+
+/* arrow button hover scale */
+document.querySelectorAll(".abtn").forEach(b=>{
+  const svg = b.querySelector("svg");
+  const flipped = svg.style.transform.includes("scaleX");
+  hover(b, svg, {scale:1}, {scale:1.15}, [320,18], (v,el)=>{
+    el.style.transform = `${flipped?"scaleX(-1) ":""}scale(${v.scale})`;
+  });
+});
+/* pill button arrow hover */
+document.querySelectorAll(".pill svg").forEach(svg=>{
+  hover(svg.parentElement, svg, {x:0}, {x:5}, [320,20]);
+});
+
+/* ---------- programs ---------- */
+const programs = [
+  ["01","Junior Development","Fundamentals, footwork, and match play for ages 6–14.","#junior"],
+  ["02","Performance Squad","High-volume training for competitive and ranked players.","#performance"],
+  ["03","Adult Clinics","Small-group sessions to sharpen technique and fitness.","#adult"],
+  ["04","Private Coaching","One-to-one sessions tailored to your goals and schedule.","#private"]
+];
+const progList = document.getElementById("progList");
+programs.forEach(([num,name,desc,href],i)=>{
+  const a = document.createElement("a");
+  a.className = "prog-row"; a.href = href;
+  a.innerHTML = `<div class="prog-inner"><span class="prog-num">${num}</span>
+    <span><span class="prog-name" style="display:block">${name}</span><span class="prog-desc" style="display:block">${desc}</span></span>
+    <span class="prog-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>`;
+  progList.appendChild(a);
+  const inner = a.firstElementChild;
+  const sp = mkSpring(inner, {opacity:0,y:26}, {opacity:1,y:0}, [190,26]);
+  const io = new IntersectionObserver(en=>{ if(en[0].isIntersecting){ setTimeout(()=>sp.to({opacity:1,y:0}), RM?0:i*90); io.disconnect(); } },{threshold:0.2});
+  io.observe(a);
+  const arrow = a.querySelector(".prog-arrow");
+  hover(a, arrow, {x:0,opacity:0.55}, {x:8,opacity:1}, [300,20]);
+});
+
+/* ---------- facilities body word fade ---------- */
+const facBody = document.getElementById("facBody");
+(function(){
+  const text = facBody.textContent.trim();
+  facBody.textContent = "";
+  const words = text.split(" ").map((w,i)=>{
+    const s = document.createElement("span");
+    s.className = "wfade"; s.textContent = w;
+    s.style.transition = `transform 700ms ${EASE.easeOutQuart} ${250 + i*28}ms, opacity 700ms ${EASE.easeOutQuart} ${250 + i*28}ms`;
+    facBody.appendChild(s); facBody.appendChild(document.createTextNode(" "));
+    return s;
+  });
+  const io = new IntersectionObserver(en=>{ if(en[0].isIntersecting){ words.forEach(w=>w.classList.add("go")); io.disconnect(); } },{threshold:0.2});
+  io.observe(facBody);
+})();
+/* court hover scale */
+document.querySelectorAll("[data-hoverscale]").forEach(fig=>{
+  hover(fig, fig.querySelector("img"), {scale:1}, {scale:1.03}, [300,22]);
+});
+
+/* ---------- stats ---------- */
+const stats = [["24","Certified coaches"],["12","Championship courts"],["9K+","Members training"],["15","Years on the baseline"]];
+const statGrid = document.getElementById("statGrid");
+stats.forEach(([v,l],i)=>{
+  const d = document.createElement("div");
+  d.className = "stat";
+  d.innerHTML = `<dt class="sr-only">${l}</dt><dd><b>${v}</b><span>${l}</span></dd>`;
+  statGrid.appendChild(d);
+  const sp = mkSpring(d, {opacity:0,y:30}, {opacity:1,y:0}, [180,24]);
+  const io = new IntersectionObserver(en=>{ if(en[0].isIntersecting){ setTimeout(()=>sp.to({opacity:1,y:0}), RM?0:i*110); io.disconnect(); } },{threshold:0.2});
+  io.observe(d);
+});
+
+/* ---------- testimonials ---------- */
+const testis = [
+  ["I added a level to my serve in one season. The coaching is detailed and it actually sticks.","Priya Anand","Performance Squad"],
+  ["Best courts in the city and a team that treats every member like a competitor.","Lukas Brenner","Adult Clinics"],
+  ["My daughter went from shy beginner to club champion. Worth every minute.","Dana Okafor","Parent, Junior Development"]
+];
+const testiGrid = document.getElementById("testiGrid");
+testis.forEach(([q,n,r],i)=>{
+  const wrap = document.createElement("div");
+  const card = document.createElement("figure");
+  card.className = "tcard";
+  card.innerHTML = `<div><span class="tquote">&ldquo;</span><p>${q}</p></div>
+    <figcaption class="tfoot"><b>${n}</b><span>${r}</span></figcaption>`;
+  wrap.appendChild(card); testiGrid.appendChild(wrap);
+  const sp = mkSpring(wrap, {opacity:0,y:40}, {opacity:1,y:0}, [180,26]);
+  const io = new IntersectionObserver(en=>{ if(en[0].isIntersecting){ setTimeout(()=>sp.to({opacity:1,y:0}), RM?0:i*120); io.disconnect(); } },{threshold:0.2});
+  io.observe(wrap);
+  hover(card, card, {y:0}, {y:-8}, [300,22]);
+});
+
+/* ---------- smooth anchor scroll ---------- */
+document.addEventListener("click", e=>{
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const id = a.getAttribute("href");
+  const t = id.length > 1 && document.querySelector(id);
+  if (!t) return;
+  e.preventDefault();
+  lenis.scrollTo(t, {offset:0});
+});
+
+/* ---------- menu overlay ---------- */
+const menu = document.getElementById("menu");
+const menuBd = menu.querySelector(".menu-bd");
+const menuPanel = menu.querySelector(".menu-panel");
+const menuBdSp = mkSpring(menuBd, {opacity:0}, {opacity:1}, [260,30], (v,el)=> el.style.opacity = v.opacity);
+const menuPanelSp = mkSpring(menuPanel, {opacity:0,y:-24}, {opacity:1,y:0}, [220,28]);
+const menuLinkSps = [...document.querySelectorAll("#menuNav a")].map(a => mkSpring(a, {opacity:0,y:28}, {opacity:1,y:0}, [200,26]));
+let menuOpen = false;
+const mainContent = document.getElementById("mainContent");
+function openMenu(){
+  if (menuOpen) return; menuOpen = true;
+  menu.classList.add("open"); menu.setAttribute("aria-hidden","false");
+  mainContent.inert = true;
+  menuBdSp.to({opacity:1}); menuPanelSp.to({opacity:1,y:0});
+  menuLinkSps.forEach((sp,i)=> setTimeout(()=> sp.to({opacity:1,y:0}), RM?0:120 + i*70));
+  lock();
+}
+function closeMenu(){
+  if (!menuOpen) return; menuOpen = false;
+  menuBdSp.to({opacity:0}); menuPanelSp.to({opacity:0,y:-24});
+  menuLinkSps.forEach(sp=> sp.to({opacity:0,y:28}));
+  menu.classList.remove("open"); menu.setAttribute("aria-hidden","true");
+  mainContent.inert = false;
+  unlock();
+}
+document.getElementById("burger").addEventListener("click", openMenu);
+document.querySelectorAll("[data-close-menu]").forEach(b=> b.addEventListener("click", closeMenu));
+document.querySelectorAll("#menuNav a").forEach(a=> a.addEventListener("click", ()=> setTimeout(closeMenu, 10)));
+
+/* X icon rotate hover */
+document.querySelectorAll(".xicon").forEach(x=>{
+  hover(x.parentElement, x, {rotate:0}, {rotate:90}, [300,18]);
+});
+
+/* ---------- contact modal ---------- */
+const modal = document.getElementById("modal");
+const modalBd = modal.querySelector(".modal-bd");
+const modalPanel = modal.querySelector(".modal-panel");
+const mBdSp = mkSpring(modalBd, {opacity:0}, {opacity:1}, [240,30], (v,el)=> el.style.opacity = v.opacity);
+const mPanelSp = mkSpring(modalPanel, {opacity:0,y:28,scale:0.96}, {opacity:1,y:0,scale:1}, [240,26]);
+const cform = document.getElementById("cform");
+const csuccess = document.getElementById("csuccess");
+const csubmit = document.getElementById("csubmit");
+let modalOpen = false;
+function openModal(){
+  if (modalOpen) return; modalOpen = true;
+  modal.classList.add("open"); modal.setAttribute("aria-hidden","false");
+  mBdSp.to({opacity:1}); mPanelSp.to({opacity:1,y:0,scale:1});
+  playStacked(modal.querySelector("[data-lines]"));
+  lock();
+  setTimeout(()=> document.getElementById("f-name").focus(), 120);
+}
+function closeModal(){
+  if (!modalOpen) return; modalOpen = false;
+  mBdSp.to({opacity:0}); mPanelSp.to({opacity:0,y:28,scale:0.96});
+  modal.classList.remove("open"); modal.setAttribute("aria-hidden","true");
+  unlock();
+  setTimeout(()=>{ cform.reset(); cform.hidden = false; csuccess.hidden = true; csubmit.disabled = false; csubmit.textContent = "Request a visit"; }, 350);
+}
+document.querySelectorAll("[data-open-modal]").forEach(b=> b.addEventListener("click", openModal));
+document.querySelectorAll("[data-close-modal]").forEach(b=> b.addEventListener("click", closeModal));
+document.getElementById("menuBook").addEventListener("click", ()=>{ closeMenu(); setTimeout(openModal, 220); });
+addEventListener("keydown", e=>{ if(e.key === "Escape"){ closeModal(); closeMenu(); } });
+
+cform.addEventListener("submit", e=>{
+  e.preventDefault();
+  csubmit.disabled = true; csubmit.textContent = "Sending…";
+  const first = (cform.name.value || "").trim().split(" ")[0] || "there";
+  setTimeout(()=>{
+    cform.hidden = true; csuccess.hidden = false;
+    document.getElementById("cmsg").textContent = `Thanks, ${first} — our team will be in touch to lock in your visit.`;
+  }, 700);
+});
+
+/* ---------- loader ---------- */
+const loader = document.getElementById("loader");
+const loaderWm = document.getElementById("loaderWm");
+const loaderFill = document.getElementById("loaderFill");
+mkSpring(loaderWm, {opacity:0,y:16}, {opacity:1,y:0}, [200,22]).to({opacity:1,y:0});
+const fillDur = MIN_VISIBLE_MS - 120;
+setTimeout(()=>{
+  loaderFill.style.transition = `transform ${RM?200:fillDur}ms ${EASE.easeInOutCubic}`;
+  loaderFill.style.transform = "scaleX(1)";
+}, RM?0:120);
+
+let started = false, autoplayTimer = null;
+function ready(){
+  if (started) return; started = true;
+  playClips(heroTitleNodes, {stagger:140, dur:1100});
+  playClips(heroTagNodes, {base:350, stagger:110, dur:900});
+  setTimeout(()=> sliderSp.to({opacity:1,y:0}), RM?0:650);
+  setTimeout(()=> memberSp.to({opacity:1,y:0}), RM?0:780);
+  autoplayTimer = setInterval(()=> setSlide(slideIdx+1), 3800);
+  unlock();
+  if (RM){ loader.remove(); return; }
+  loader.style.transition = `transform ${EXIT_MS}ms ${EASE.easeInOutCubic}`;
+  loader.style.transform = "translateY(-105%)";
+  setTimeout(()=> loader.remove(), EXIT_MS);
+}
+const minMs = RM ? 200 : MIN_VISIBLE_MS;
+let countdown = null;
+function startCountdown(){ if (countdown) return; countdown = setTimeout(ready, minMs); }
+if (document.readyState === "complete") startCountdown();
+else addEventListener("load", startCountdown);
+setTimeout(startCountdown, RM ? 400 : MAX_VISIBLE_MS);
+</script>
+</body>
+</html>

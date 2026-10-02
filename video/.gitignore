@@ -1,1 +1,4 @@
 out/
+tts/node_modules/
+tts/models/
+tts/package*.json

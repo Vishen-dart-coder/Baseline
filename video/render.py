@@ -39,8 +39,8 @@ def grab(page, t):
 
 
 def render_chunk(args):
-    idx, f0, f1, sub = args
-    seg = OUT / f"seg_{idx:02d}.mp4"
+    idx, f0, f1, sub, tag = args
+    seg = OUT / f"{tag}seg_{idx:02d}.mp4"
     enc = subprocess.Popen(
         ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
          "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-preset", "slow", "-crf", "12",
@@ -72,6 +72,8 @@ def main():
     ap.add_argument("--workers", type=int, default=os.cpu_count() or 4)
     ap.add_argument("--start", type=float, default=0.0)
     ap.add_argument("--end", type=float)
+    ap.add_argument("--frames", help="exact frame range F0:F1 (overrides --start/--end)")
+    ap.add_argument("--tag", default="", help="prefix for segment/output files, for parallel partial renders")
     a = ap.parse_args()
     OUT.mkdir(exist_ok=True)
 
@@ -88,16 +90,18 @@ def main():
         dur = page.evaluate("DURATION")
         browser.close()
     f0, f1 = int(a.start * FPS), int((a.end or dur) * FPS)
+    if a.frames:
+        f0, f1 = map(int, a.frames.split(":"))
     n = a.workers
     bounds = [f0 + (f1 - f0) * i // n for i in range(n + 1)]
     with Pool(n) as pool:
-        segs = pool.map(render_chunk, [(i, bounds[i], bounds[i + 1], a.sub) for i in range(n)])
-    (OUT / "segs.txt").write_text("".join(f"file '{s.name}'\n" for s in segs))
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(OUT / "segs.txt"),
-                    "-c", "copy", str(OUT / "video_only.mp4")], check=True)
+        segs = pool.map(render_chunk, [(i, bounds[i], bounds[i + 1], a.sub, a.tag) for i in range(n)])
+    (OUT / f"{a.tag}segs.txt").write_text("".join(f"file '{s.name}'\n" for s in segs))
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(OUT / f"{a.tag}segs.txt"),
+                    "-c", "copy", str(OUT / f"{a.tag}video_only.mp4")], check=True)
     for s in segs:
         s.unlink()
-    print("wrote", OUT / "video_only.mp4")
+    print("wrote", OUT / f"{a.tag}video_only.mp4")
 
 
 if __name__ == "__main__":

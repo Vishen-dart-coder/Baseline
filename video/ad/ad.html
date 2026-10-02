@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>technomadenviro Ad</title>
+<style>
+@font-face{font-family:Onest;font-weight:400;src:url(../fonts/onest-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:Onest;font-weight:500;src:url(../fonts/onest-latin-500-normal.woff2) format("woff2")}
+/* palette from technomadenviro.com/style.css */
+:root{
+  --background:#ffffff; --brand:#2563c9; --brand-deep:#0f2f63; --brand-light:#5790e6;
+  --accent-teal:#0b6e97; --surface:#f4f4f4; --ink:#0a0a0a; --ink-soft:#717784; --ghost:#d7dae1; --hairline:#e6e8ec;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:var(--background);
+  font-family:Onest,system-ui,sans-serif;font-weight:400;color:var(--ink);-webkit-font-smoothing:antialiased}
+.sec{position:absolute;inset:0;display:none;will-change:transform}
+.abs{position:absolute}
+.clip{display:inline-block;overflow:hidden;vertical-align:bottom;padding-bottom:.14em}
+.clip>span{display:inline-block;will-change:transform,opacity}
+.lines .clip{display:block}
+.up{text-transform:uppercase;letter-spacing:-.02em;font-weight:500}
+.eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:24px;font-weight:500;text-transform:uppercase;letter-spacing:.22em}
+.eyebrow i{width:11px;height:11px;border-radius:99px;display:block}
+.eyebrow.dark{color:var(--ink-soft)} .eyebrow.dark i{background:var(--brand)}
+.eyebrow.light{color:rgba(255,255,255,.7)} .eyebrow.light i{background:var(--brand-light)}
+.panel{position:absolute;left:14px;top:14px;right:14px;bottom:14px;border-radius:40px;overflow:hidden}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.brand{display:flex;align-items:center;gap:16px;font-weight:500;text-transform:uppercase;letter-spacing:.2em}
+.pill{display:inline-flex;align-items:center;gap:16px;border-radius:999px;padding:34px 62px;font-size:30px;font-weight:500;text-transform:uppercase;letter-spacing:.08em}
+.pill.light{background:#fff;color:var(--brand-deep)}
+.pill svg{width:32px;height:32px}
+.doc{position:absolute;width:380px;height:470px;border-radius:30px;background:#fff;border:1.5px solid var(--hairline);
+  box-shadow:0 40px 80px rgba(15,47,99,.14);padding:36px;display:flex;flex-direction:column}
+.doc .n{font-size:24px;font-weight:500;color:var(--brand)}
+.doc h3{font-size:50px;font-weight:500;letter-spacing:-.02em;line-height:1;margin-top:20px}
+.doc p{font-size:21px;color:var(--ink-soft);margin-top:12px;line-height:1.4}
+.doc .ln{height:10px;border-radius:99px;background:var(--surface);margin-top:16px}
+</style>
+</head>
+<body>
+
+<!-- 1 · HOOK -->
+<section class="sec" id="s1">
+  <div class="panel" style="background:var(--brand-deep);color:#fff">
+    <img id="drone" class="cover" alt="">
+    <div class="cover" style="background:linear-gradient(to bottom,rgba(15,47,99,.65),rgba(15,47,99,.35),rgba(15,47,99,.75))"></div>
+    <h1 class="abs up lines" id="hook" data-lines="Zero liquid|discharge" style="left:0;right:0;top:300px;text-align:center;font-size:232px;line-height:.86"></h1>
+  </div>
+</section>
+
+<!-- 2 · TREATMENT PLANTS -->
+<section class="sec" id="s2">
+  <div class="panel" style="background:var(--brand-deep);color:#fff">
+    <img src="../assets/water-treatment-aerial.jpg" id="s2bg" class="cover" alt="" style="opacity:.22">
+    <div class="cover" style="background:linear-gradient(90deg,rgba(15,47,99,.96) 35%,rgba(15,47,99,.55))"></div>
+    <div class="abs" style="left:120px;top:120px"><span class="eyebrow light" id="s2eb"><i></i>technomadenviro designs</span></div>
+    <div class="abs" id="roll" style="left:105px;top:215px;height:400px;overflow:hidden;font-size:400px;line-height:1;letter-spacing:-.04em;font-weight:500">
+      <div id="rollIn"></div>
+    </div>
+    <div class="abs" style="left:126px;top:640px;height:70px;overflow:hidden;font-size:52px;letter-spacing:-.01em;color:rgba(255,255,255,.85)"><div id="labelIn"></div></div>
+    <div class="abs" id="s2grid" style="left:120px;right:120px;bottom:110px;display:grid;grid-template-columns:repeat(4,1fr);column-gap:48px"></div>
+  </div>
+</section>
+
+<!-- 3 · INFRASTRUCTURE -->
+<section class="sec" id="s3" style="background:var(--background)">
+  <div class="abs" style="left:120px;top:120px"><span class="eyebrow dark" id="s3eb"><i></i>Infrastructure &amp; building</span></div>
+  <h2 class="abs lines" id="s3h" data-lines="MEP|Electrical|Rainwater|Clean energy" style="left:120px;top:190px;font-size:160px;font-weight:500;letter-spacing:-.03em;line-height:.98"></h2>
+  <figure class="abs" id="s3card" style="left:1250px;top:170px;width:540px;height:720px;border-radius:36px;overflow:hidden;background:var(--brand)">
+    <img class="cover" src="../assets/electrical-engineering.jpg" alt="">
+    <figcaption class="abs" style="left:18px;right:18px;bottom:18px;border-radius:20px;background:rgba(15,47,99,.4);color:#fff;backdrop-filter:blur(12px);padding:22px 26px">
+      <b style="display:block;font-size:30px;font-weight:500">Infrastructure</b><span style="font-size:21px;opacity:.85">MEP, electrical &amp; rainwater</span></figcaption>
+  </figure>
+</section>
+
+<!-- 4 · DELIVERABLES -->
+<section class="sec" id="s4" style="background:var(--surface)">
+  <div class="abs" style="left:120px;top:110px"><span class="eyebrow dark" id="s4eb"><i></i>Project design support</span></div>
+  <h2 class="abs lines" id="s4h" data-lines="Every document|your project needs" style="left:120px;top:170px;font-size:104px;font-weight:500;letter-spacing:-.02em;line-height:.95"></h2>
+  <div id="docs"></div>
+</section>
+
+<!-- 5 · CTA -->
+<section class="sec" id="s5">
+  <div class="panel" style="background:var(--brand-deep);color:#fff">
+    <div class="abs" style="left:0;right:0;top:150px;display:flex;justify-content:center"><img id="logo" src="../assets/technomadenviro-logo-white.png" width="150" height="150" alt=""></div>
+    <h2 class="abs lines" id="s5h" data-lines="Engineering consultancy,|from plant to building." style="left:0;right:0;top:350px;text-align:center;font-size:118px;font-weight:500;letter-spacing:-.02em;line-height:.98"></h2>
+    <div class="abs" style="left:0;right:0;top:665px;display:flex;justify-content:center"><div class="pill light" id="pill">Discuss a project
+      <svg id="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+    <div class="abs" style="left:0;right:0;top:850px;text-align:center">
+      <div style="display:inline-block;position:relative;font-size:46px;letter-spacing:.02em"><span class="clip"><span id="url">technomadenviro.com</span></span>
+        <i id="urlLine" class="abs" style="left:0;right:0;bottom:-4px;height:2px;background:rgba(255,255,255,.5);transform-origin:left"></i></div>
+    </div>
+  </div>
+</section>
+
+<script>
+const DURATION = 30.0, VIDEO_FPS = 30, VIDEO_FRAMES = 402;
+
+/* ---------- the site's easing curves and springs ---------- */
+function bezier(x1, y1, x2, y2) {
+  const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx;
+  const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
+  const X = u => ((ax * u + bx) * u + cx) * u, Y = u => ((ay * u + by) * u + cy) * u;
+  return t => {
+    if (t <= 0) return 0; if (t >= 1) return 1;
+    let lo = 0, hi = 1, u = t;
+    for (let i = 0; i < 40; i++) { X(u) < t ? lo = u : hi = u; u = (lo + hi) / 2; }
+    return Y(u);
+  };
+}
+const EASE = { expo: bezier(.16, 1, .3, 1), quart: bezier(.25, 1, .5, 1), inOut: bezier(.65, 0, .35, 1), inQuart: bezier(.5, 0, .75, 0), lin: t => t };
+const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
+const lerp = (a, b, p) => a + (b - a) * p;
+const seg = (t, a, dur, ease = EASE.expo) => t <= a ? 0 : t >= a + dur ? 1 : ease((t - a) / dur);
+function spring(t, t0, k, c) {
+  const x = t - t0; if (x <= 0) return 0;
+  const w = Math.sqrt(k), z = c / (2 * w);
+  if (z >= 1) { const s = Math.sqrt(z * z - 1), r1 = -w * (z - s), r2 = -w * (z + s); return 1 - (r2 * Math.exp(r1 * x) - r1 * Math.exp(r2 * x)) / (r2 - r1); }
+  const wd = w * Math.sqrt(1 - z * z);
+  return 1 - Math.exp(-z * w * x) * (Math.cos(wd * x) + (z * w / wd) * Math.sin(wd * x));
+}
+const $ = id => document.getElementById(id);
+function tf(el, {x = 0, y = 0, s = 1, r = 0, o, yPct} = {}) {
+  el.style.transform = `translate3d(${x}px,${yPct !== undefined ? yPct + '%' : y + 'px'},0) scale(${s}) rotate(${r}deg)`;
+  if (o !== undefined) el.style.opacity = o;
+}
+const clips = {};
+document.querySelectorAll('[data-lines]').forEach(el => {
+  const parts = el.dataset.lines.split('|'); el.textContent = '';
+  clips[el.id] = parts.map(p => { const c = document.createElement('span'); c.className = 'clip'; const s = document.createElement('span'); s.textContent = p; c.appendChild(s); el.appendChild(c); return s; });
+});
+function reveal(nodes, t, times, {dur = .9, out, outStagger = .05} = {}) {
+  nodes.forEach((n, i) => {
+    const p = seg(t, times[i], dur, EASE.expo), q = out !== undefined ? seg(t, out + i * outStagger, .5, EASE.inOut) : 0;
+    tf(n, {yPct: (1 - p) * 115 - q * 115, o: p * (1 - q)});
+  });
+}
+
+/* ---------- build ---------- */
+const PLANTS = [['ETP', 'Effluent treatment plants'], ['STP', 'Sewage treatment plants'], ['WTP', 'Water treatment plants'], ['ZLD', 'Zero liquid discharge']];
+$('rollIn').innerHTML = PLANTS.map(([k]) => `<div style="height:400px">${k}</div>`).join('');
+$('labelIn').innerHTML = PLANTS.map(([, l]) => `<div style="height:70px">${l}</div>`).join('');
+PLANTS.forEach(([k, l]) => {
+  const d = document.createElement('div');
+  d.style.cssText = 'position:relative;padding-top:24px;font-size:30px;font-weight:500';
+  d.innerHTML = `<i style="position:absolute;left:0;right:0;top:0;height:2px;background:rgba(255,255,255,.18)"></i>
+    <i class="fill" style="position:absolute;left:0;right:0;top:0;height:2px;background:#fff;transform-origin:left;transform:scaleX(0)"></i>${k}
+    <span style="display:block;font-size:20px;font-weight:400;color:rgba(255,255,255,.6);margin-top:6px">${l}</span>`;
+  $('s2grid').appendChild(d);
+});
+const DOCS = [['01', 'BOQs', 'Bills of Quantities & datasheets'], ['02', 'Tenders', 'Preparation & bid evaluation'],
+              ['03', 'PFDs', 'Process flow diagrams'], ['04', 'Site-ready drawings', 'Layouts & as-built records']];
+DOCS.forEach(([n, h, p], i) => {
+  const d = document.createElement('div'); d.className = 'doc'; d.id = 'doc' + i;
+  d.style.left = (120 + i * 425) + 'px'; d.style.top = '520px';
+  d.innerHTML = `<span class="n">${n}</span><h3>${h}</h3><p>${p}</p><div style="margin-top:auto">
+    <div class="ln" style="width:92%"></div><div class="ln" style="width:76%"></div><div class="ln" style="width:84%"></div><div class="ln" style="width:58%"></div></div>`;
+  $('docs').appendChild(d);
+});
+
+/* ---------- cues: each lands on its spoken word (voice starts: 0, 2.5, 10.05, 16.2, 22.4) ---------- */
+const CUE = {
+  hook: [.38, 1.72],
+  plants: [4.42, 5.27, 6.02, 8.3],
+  infra: [12.0, 12.55, 13.32, 14.66],
+  docs: [18.1, 18.72, 19.5, 20.3],
+  cta: {line1: 22.72, line2: 24.45, pill: 26.05, url: 27.08}
+};
+const SEC = [ // [id, in-start, out-start, how it leaves]
+  ['s1', -1, 2.72, 'x'], ['s2', 2.72, 9.92, 'y'], ['s3', 9.92, 15.95, 'x'], ['s4', 15.95, 22.15, 'y'], ['s5', 22.15, 99]
+];
+const MOVE = .62;
+function place(t) {
+  SEC.forEach(([id, a, b, how], k) => {
+    const el = $(id), vis = t >= a && t < b + MOVE;
+    el.style.display = vis ? 'block' : 'none';
+    if (!vis) return;
+    const prev = k ? SEC[k - 1][3] : 'y';
+    const inP = a < 0 ? 1 : seg(t, a, MOVE, EASE.inOut), outP = seg(t, b, MOVE, EASE.inOut);
+    const W = 1920, H = 1080;
+    let x = 0, y = 0;
+    if (prev === 'x') x += (1 - inP) * W; else y += (1 - inP) * H;
+    if (how === 'x') x -= outP * W; else y -= outP * H;
+    tf(el, {x, y});
+  });
+}
+
+let pending = [];
+function setSrc(img, src) { if (img.getAttribute('src') !== src) { img.setAttribute('src', src); pending.push(img.decode().catch(() => {})); } }
+
+function seek(t) {
+  pending = [];
+  place(t);
+
+  /* 1 — hook: drone push-in, ZERO LIQUID / DISCHARGE slam */
+  if (t < 3.4) {
+    setSrc($('drone'), `../out/hero/f_${String(Math.min(VIDEO_FRAMES, 120 + Math.floor(t * VIDEO_FPS))).padStart(4, '0')}.jpg`);
+    tf($('drone'), {s: lerp(1.0, 1.1, clamp(t / 3.4))});
+    clips.hook.forEach((n, i) => {
+      const p = seg(t, CUE.hook[i], .75, EASE.expo);
+      tf(n, {yPct: (1 - p) * 115, o: p, s: lerp(1.12, 1, p)});
+    });
+  }
+
+  /* 2 — treatment plants: odometer roll on each spoken word */
+  if (t >= 2.72 && t < 10.6) {
+    const eb = seg(t, 3.0, .8); tf($('s2eb'), {y: (1 - eb) * 16, o: eb});
+    let pos = 0;                                   // 0..3 row index, eased between cues
+    CUE.plants.forEach((c, i) => { if (i) pos += seg(t, c - .12, .55, EASE.expo); });
+    const first = seg(t, CUE.plants[0] - .1, .8, EASE.expo);
+    $('rollIn').style.transform = `translate3d(0,${(1 - first) * 400 - pos * 400}px,0)`;
+    $('labelIn').style.transform = `translate3d(0,${(1 - first) * 70 - pos * 70}px,0)`;
+    [...$('s2grid').children].forEach((d, i) => {
+      const g = spring(t, 3.25 + i * .08, 200, 26); tf(d, {y: (1 - g) * 30, o: clamp(g) * (pos >= i - .5 && first > .5 ? 1 : .45)});
+      d.querySelector('.fill').style.transform = `scaleX(${seg(t, CUE.plants[i] - .1, .7, EASE.inOut)})`;
+    });
+    tf($('s2bg'), {s: lerp(1.15, 1.03, seg(t, 2.72, 7.5, EASE.quart)), x: lerp(40, -40, clamp((t - 2.72) / 7.5))});
+  }
+
+  /* 3 — infrastructure list builds on the voice; earlier lines fade to ghost */
+  if (t >= 9.92 && t < 16.6) {
+    const eb = seg(t, 10.3, .8); tf($('s3eb'), {y: (1 - eb) * 16, o: eb});
+    reveal(clips.s3h, t, CUE.infra, {dur: .85});
+    clips.s3h.forEach((n, i) => {
+      const next = CUE.infra[i + 1];
+      const dim = next ? seg(t, next, .5, EASE.inOut) * (1 - seg(t, 15.2, .5, EASE.inOut)) : 0;
+      n.style.color = `rgb(${lerp(10, 215, dim)},${lerp(10, 218, dim)},${lerp(10, 225, dim)})`;
+    });
+    const c = spring(t, 10.45, 170, 24);
+    tf($('s3card'), {y: (1 - c) * 160 + (t - 10.45) * -6, r: lerp(14, 6, c), s: lerp(.9, 1, c), o: clamp(c * 1.5)});
+  }
+
+  /* 4 — deliverables: documents fan in on BOQs / tenders / PFDs / drawings */
+  if (t >= 15.95 && t < 22.8) {
+    const eb = seg(t, 16.35, .8); tf($('s4eb'), {y: (1 - eb) * 16, o: eb});
+    reveal(clips.s4h, t, [16.5, 16.66]);
+    DOCS.forEach((_, i) => {
+      const p = spring(t, CUE.docs[i], 210, 22);
+      tf($('doc' + i), {x: (1 - p) * 520, y: (1 - p) * 380, r: (1 - p) * 18 + (i % 2 ? -1.5 : 1.5) * clamp(p), s: lerp(.85, 1, p), o: clamp(p * 2)});
+    });
+  }
+
+  /* 5 — CTA */
+  if (t >= 22.15) {
+    const lg = spring(t, 22.4, 180, 22); tf($('logo'), {s: lerp(.7, 1, lg), o: clamp(lg)});
+    reveal(clips.s5h, t, [CUE.cta.line1, CUE.cta.line2], {dur: 1});
+    clips.s5h[1].style.color = 'var(--brand-light)';
+    const pl = spring(t, CUE.cta.pill, 200, 22);
+    const press = t > 28.1 && t < 28.6 ? 1 - .06 * Math.sin((t - 28.1) / .5 * Math.PI) : 1;
+    tf($('pill'), {y: (1 - pl) * 40, s: lerp(.85, 1, pl) * press, o: clamp(pl * 1.5)});
+    tf($('arrow'), {x: 6 * spring(t, 27.6, 320, 20)});
+    const u = seg(t, CUE.cta.url, .9, EASE.expo); tf($('url'), {yPct: (1 - u) * 115, o: u});
+    $('urlLine').style.transform = `scaleX(${seg(t, CUE.cta.url + .35, 1, EASE.inOut)})`;
+  }
+  return Promise.all(pending);
+}
+window.seek = seek; window.DURATION = DURATION;
+seek(0);
+</script>
+</body>
+</html>

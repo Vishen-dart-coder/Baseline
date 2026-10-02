@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Baseline Film</title>
+<style>
+@font-face{font-family:Onest;font-weight:400;src:url(fonts/onest-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:Onest;font-weight:500;src:url(fonts/onest-latin-500-normal.woff2) format("woff2")}
+:root{
+  --background:#ffffff; --surface:#f4f4f4; --ink:#0a0a0a; --ink-soft:#717784;
+  --hairline:#e6e8ec; --ghost:#d7dae1; --brand:#2563c9; --brand-deep:#0f2f63;
+  --brand-light:#5790e6; --accent-teal:#0b6e97; --lime:#c2e029;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1920px;height:1080px;overflow:hidden;background:var(--background);
+  font-family:Onest,sans-serif;font-weight:500;color:var(--ink);
+  -webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+.layer{position:absolute;inset:0;display:none;will-change:transform,opacity,filter}
+.abs{position:absolute}
+.w{display:inline-block;white-space:pre;will-change:transform,opacity,filter}
+.up{text-transform:uppercase;letter-spacing:-.02em;line-height:.9}
+.eyebrow{display:inline-flex;align-items:center;gap:14px;font-size:22px;text-transform:uppercase;letter-spacing:.22em}
+.eyebrow i{width:11px;height:11px;border-radius:99px;display:block}
+.eyebrow.dark{color:var(--ink-soft)} .eyebrow.dark i{background:var(--brand)}
+.eyebrow.light{color:rgba(255,255,255,.7)} .eyebrow.light i{background:var(--brand-light)}
+.card{position:absolute;overflow:hidden;border-radius:48px}
+.cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.courtart{position:absolute;inset:0;width:100%;height:100%}
+.glass{border-radius:28px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.10);
+  box-shadow:0 30px 60px rgba(15,47,99,.2);backdrop-filter:blur(14px)}
+.pill{display:inline-flex;align-items:center;gap:16px;border-radius:999px;padding:30px 56px;
+  font-size:30px;text-transform:uppercase;letter-spacing:.08em}
+.pill.solid{background:var(--ink);color:#fff}
+.pill svg{width:34px;height:34px}
+.dot{width:46px;height:46px;border-radius:99px;border:2px solid rgba(255,255,255,.35);margin-left:-14px;display:inline-block}
+</style>
+</head>
+<body>
+
+<!-- S1 · opener -->
+<section class="layer" id="s1" style="background:var(--background)">
+  <div class="abs" style="left:0;right:0;top:250px;text-align:center">
+    <div class="eyebrow dark" id="s1eb"><i></i>Baseline Tennis Club &amp; Academy</div>
+  </div>
+  <h1 class="abs up" id="s1h" style="left:0;right:0;top:350px;text-align:center;font-size:150px;font-weight:500">
+    <div data-words>Every great point</div>
+    <div data-words>starts at the</div>
+    <div data-words style="color:var(--brand)">Baseline.</div>
+  </h1>
+  <div class="abs" id="s1disc" style="left:960px;top:540px;width:10px;height:10px;margin:-5px 0 0 -5px;border-radius:999px;background:var(--brand-deep)"></div>
+</section>
+
+<!-- S2 · logo -->
+<section class="layer" id="s2" style="background:var(--brand-deep);color:#fff">
+  <div class="abs" id="s2g" style="left:0;right:0;top:330px;text-align:center">
+    <svg id="s2logo" viewBox="0 0 24 24" width="190" height="190" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block">
+      <circle id="s2c" cx="12" cy="12" r="9" pathLength="1" stroke-dasharray="1 1"/>
+      <path id="s2p1" d="M4.5 5.5c3.6 2.2 5.2 6.6 4.2 11" pathLength="1" stroke-dasharray="1 1"/>
+      <path id="s2p2" d="M19.5 5.5c-3.6 2.2-5.2 6.6-4.2 11" pathLength="1" stroke-dasharray="1 1"/>
+    </svg>
+    <div id="s2word" style="font-size:120px;text-transform:uppercase;letter-spacing:.22em;margin-top:44px;padding-left:.22em">Baseline</div>
+    <div style="margin-top:36px"><div class="eyebrow light" id="s2eb"><i></i>Members' Club · Academy</div></div>
+  </div>
+</section>
+
+<!-- S3 · hero -->
+<section class="layer" id="s3" style="background:var(--background)">
+  <div class="card" id="s3card" style="left:16px;top:16px;width:1888px;height:1048px;background:var(--brand-deep);color:#fff">
+    <div id="s3bg" class="cover"></div>
+    <div class="cover" style="background:linear-gradient(to bottom,rgba(15,47,99,.65),rgba(15,47,99,.35),rgba(15,47,99,.75))"></div>
+    <div class="abs" style="left:56px;top:46px;display:flex;align-items:center;gap:14px;font-size:24px;letter-spacing:.2em;text-transform:uppercase" id="s3nav">
+      <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M4.5 5.5c3.6 2.2 5.2 6.6 4.2 11M19.5 5.5c-3.6 2.2-5.2 6.6-4.2 11"/></svg>Baseline
+    </div>
+    <h1 class="abs up" id="s3t" style="left:0;right:0;top:120px;text-align:center;font-size:196px;line-height:.85;white-space:nowrap"><span data-words>Own the court</span></h1>
+    <p class="abs" id="s3body" style="left:0;right:0;top:470px;text-align:center;font-size:40px;font-weight:400;line-height:1.3;color:rgba(255,255,255,.85)">
+      <span data-words>A members' tennis club and academy where</span><br><span data-words>focused coaching meets championship courts.</span>
+    </p>
+    <div class="abs up" id="s3show" style="left:72px;bottom:70px;font-size:64px;line-height:1"><div data-words>Show up,</div><div data-words>level up</div></div>
+    <div class="abs glass" id="s3glass" style="right:56px;bottom:56px;width:420px;padding:26px 30px">
+      <div style="font-size:64px;letter-spacing:-.02em;line-height:1">9K+</div>
+      <div style="margin:18px 0 0 14px"><span class="dot" style="background:#5790e6"></span><span class="dot" style="background:#c2e029"></span><span class="dot" style="background:#0b6e97"></span><span class="dot" style="background:#ffffff"></span></div>
+      <div style="font-size:20px;color:rgba(255,255,255,.8);margin-top:16px">Members on court</div>
+    </div>
+  </div>
+  <svg id="ball" class="abs" viewBox="0 0 100 100" width="96" height="96" style="left:0;top:0">
+    <circle cx="50" cy="50" r="48" fill="#c2e029"/>
+    <path d="M12 22c22 14 30 40 20 70M88 22c-22 14-30 40-20 70" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" opacity=".9"/>
+  </svg>
+</section>
+
+<!-- S4 · stats -->
+<section class="layer" id="s4" style="background:var(--background)">
+  <div class="card" id="s4card" style="left:16px;top:16px;width:1888px;height:1048px;background:var(--brand-deep);color:#fff">
+    <div class="abs" style="left:120px;top:120px"><div class="eyebrow light" id="s4eb"><i></i>By the numbers</div></div>
+    <div class="abs" id="s4line" style="left:120px;top:300px;width:1648px;height:2px;background:rgba(255,255,255,.2);transform-origin:left"></div>
+    <div class="abs" id="s4num" style="left:110px;top:340px;font-size:440px;line-height:1;letter-spacing:-.04em;display:flex;align-items:flex-start;height:440px">
+      <div style="height:440px;overflow:hidden"><div id="s4roll" style="display:flex;flex-direction:column"></div></div>
+      <span id="s4k" class="w">K+</span>
+    </div>
+    <div class="abs" id="s4cap" style="left:126px;top:830px;font-size:44px;color:rgba(255,255,255,.65)">Members on court</div>
+    <div class="abs" id="s4dots" style="right:140px;top:850px"></div>
+  </div>
+</section>
+
+<!-- S5 · programs -->
+<section class="layer" id="s5" style="background:var(--background)">
+  <div class="abs" style="left:120px;top:150px"><div class="eyebrow dark" id="s5eb"><i></i>Training programs</div></div>
+  <h2 class="abs up" id="s5h" style="left:120px;top:230px;font-size:128px">
+    <div data-words>Four programs.</div><div data-words style="color:var(--brand)">One standard.</div>
+  </h2>
+  <div class="abs" id="s5list" style="left:120px;right:120px;top:560px"></div>
+</section>
+
+<!-- S6 · courts -->
+<section class="layer" id="s6" style="background:var(--background)">
+  <div class="abs" style="left:120px;top:120px"><div class="eyebrow dark" id="s6eb"><i></i>Facilities</div></div>
+  <h2 class="abs up" id="s6h" style="left:120px;top:190px;font-size:84px"><div data-words>Tour our</div><div data-words>world-class</div><div data-words>courts</div></h2>
+  <div class="card" id="s6a" style="left:820px;top:120px;width:470px;height:840px;border-radius:36px;background:var(--brand-deep)">
+    <div class="cover" id="s6abg"></div>
+    <div class="abs glass" style="left:22px;right:22px;bottom:22px;padding:24px 28px;color:#fff;background:rgba(15,47,99,.4);border-radius:24px">
+      <div style="font-size:34px">Redline Clay</div>
+      <div style="font-size:20px;opacity:.85;margin-top:8px;font-weight:400">A fast outdoor clay court tuned for long, physical rallies.</div>
+    </div>
+  </div>
+  <div class="card" id="s6b" style="left:1330px;top:120px;width:470px;height:840px;border-radius:36px;background:var(--accent-teal)">
+    <div class="cover" id="s6bbg"></div>
+    <div class="abs glass" style="left:22px;right:22px;bottom:22px;padding:24px 28px;color:#fff;background:rgba(11,110,151,.55);border-radius:24px">
+      <div style="font-size:34px">Harbor Court</div>
+      <div style="font-size:20px;opacity:.85;margin-top:8px;font-weight:400">A sheltered hard court built for precision and night play.</div>
+    </div>
+  </div>
+</section>
+
+<!-- S7 · coaching -->
+<section class="layer" id="s7" style="background:var(--surface)">
+  <div class="abs" id="s7pct" style="left:150px;top:330px;width:420px;height:420px;border-radius:999px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center">
+    <div id="s7num" style="font-size:132px;letter-spacing:-.03em;line-height:1">0%</div>
+    <div style="font-size:22px;color:var(--ink-soft);letter-spacing:.2em;text-transform:uppercase;margin-top:12px">Personal</div>
+    <svg class="abs" viewBox="0 0 100 100" style="inset:-14px;width:448px;height:448px;transform:rotate(-90deg)"><circle id="s7ring" cx="50" cy="50" r="49" fill="none" stroke="var(--brand)" stroke-width=".7" pathLength="1" stroke-dasharray="1 1" stroke-linecap="round"/></svg>
+  </div>
+  <h2 class="abs up" id="s7h" style="left:700px;top:330px;font-size:132px">
+    <div data-words>Coaching built</div><div data-words>around</div><div data-words style="color:var(--brand)">your game.</div>
+  </h2>
+</section>
+
+<!-- S8 · end card -->
+<section class="layer" id="s8" style="background:var(--background)">
+  <div class="abs" id="s8main" style="left:0;right:0;top:250px;text-align:center">
+    <h1 class="up" id="s8h" style="font-size:210px;line-height:.85"><span data-words>Own the court.</span></h1>
+    <div style="margin-top:80px"><div class="pill solid" id="s8pill">Book a visit
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div></div>
+    <div id="s8info" style="margin-top:64px;font-size:28px;color:var(--ink-soft);font-weight:400;letter-spacing:.01em">
+      <span data-words>play@baseline.club   ·   +1 (212) 555-0148   ·   120 Court Lane, New York</span>
+    </div>
+  </div>
+  <div class="abs" id="s8logo" style="left:0;right:0;top:430px;text-align:center">
+    <svg viewBox="0 0 24 24" width="120" height="120" fill="none" stroke="var(--ink)" stroke-width="1.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M4.5 5.5c3.6 2.2 5.2 6.6 4.2 11M19.5 5.5c-3.6 2.2-5.2 6.6-4.2 11"/></svg>
+    <div id="s8word" style="font-size:64px;text-transform:uppercase;letter-spacing:.22em;padding-left:.22em;margin-top:28px">Baseline</div>
+  </div>
+</section>
+
+<div id="fade" class="abs" style="inset:0;background:#fff;opacity:0;pointer-events:none"></div>
+
+<script>
+/* ---------- timing & easing ---------- */
+const DURATION = 35.0;
+const E = {
+  expo: t => t >= 1 ? 1 : 1 - Math.pow(2, -10 * t),
+  quart: t => 1 - Math.pow(1 - t, 4),
+  inOut: t => t < .5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2,
+  inExpo: t => t <= 0 ? 0 : Math.pow(2, 10 * t - 10),
+  lin: t => t,
+};
+const clamp = (v, a=0, b=1) => Math.min(b, Math.max(a, v));
+const seg = (t, a, b, ease = E.expo) => t <= a ? 0 : t >= b ? 1 : ease((t - a) / (b - a));
+const lerp = (a, b, p) => a + (b - a) * p;
+// closed-form damped spring, 0 -> 1 from t0 (same feel as the site's mkSpring k/c pairs)
+function spring(t, t0, k = 180, c = 26) {
+  const x = t - t0; if (x <= 0) return 0;
+  const w = Math.sqrt(k), z = c / (2 * w);
+  if (z >= 1) return 1 - Math.exp(-w * x) * (1 + w * x);
+  const wd = w * Math.sqrt(1 - z * z);
+  return 1 - Math.exp(-z * w * x) * (Math.cos(wd * x) + (z * w / wd) * Math.sin(wd * x));
+}
+function set(el, {o = 1, x = 0, y = 0, s = 1, b = 0, r = 0, ls} = {}) {
+  el.style.opacity = o;
+  el.style.transform = `translate3d(${x}px,${y}px,0) scale(${s}) rotate(${r}deg)`;
+  el.style.filter = b > .05 ? `blur(${b}px)` : 'none';
+  if (ls !== undefined) el.style.letterSpacing = ls;
+}
+const $ = id => document.getElementById(id);
+
+/* ---------- build: split [data-words] into animatable words ---------- */
+document.querySelectorAll('[data-words]').forEach(el => {
+  const parts = el.textContent.trim().split(/(\s+)/);
+  el.textContent = '';
+  parts.forEach(p => {
+    if (/^\s+$/.test(p)) { el.appendChild(document.createTextNode(p.length > 1 ? ' '.repeat(p.length) : ' ')); return; }
+    const s = document.createElement('span'); s.className = 'w'; s.textContent = p; el.appendChild(s);
+  });
+});
+const W = sel => [...document.querySelectorAll(sel + ' .w')];
+
+// Apple-style word rise: up from below, out of blur, staggered
+function rise(words, t, t0, {stagger = .07, dur = 1.0, dy = 70, blur = 18, times} = {}) {
+  words.forEach((w, i) => {
+    const p = seg(t, times ? times[i] : t0 + i * stagger, (times ? times[i] : t0 + i * stagger) + dur, E.expo);
+    set(w, {o: clamp(p * 1.6), y: (1 - p) * dy, b: (1 - p) * blur});
+  });
+}
+// exit: drift up, defocus, fade
+function leave(el, t, t0, dur = .5, {dy = -40, blur = 24, s = 1} = {}) {
+  const p = seg(t, t0, t0 + dur, E.inOut);
+  return {o: 1 - p, y: p * dy, b: p * blur, s: lerp(1, s, p)};
+}
+
+/* ---------- optional photography: drop the site's images into video/assets ---------- */
+const ART = (tone) => `<svg class="courtart" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice">
+  <defs><radialGradient id="g${tone}" cx="70%" cy="20%" r="90%"><stop offset="0" stop-color="${tone}"/><stop offset="1" stop-color="#0f2f63"/></radialGradient></defs>
+  <rect width="1000" height="1000" fill="url(#g${tone})"/>
+  <g fill="none" stroke="rgba(255,255,255,.16)" stroke-width="3">
+    <path d="M330 300 L670 300 L960 1000 L40 1000 Z"/><path d="M372 300 L195 1000 M628 300 L805 1000"/>
+    <path d="M281 540 L719 540"/><path d="M500 540 L500 1000"/><path d="M300 470 L700 470" stroke-width="6" stroke="rgba(255,255,255,.28)"/>
+  </g></svg>`;
+function photo(slot, file, tone) {
+  const el = $(slot);
+  el.innerHTML = ART(tone);
+  const img = new Image();
+  img.onload = () => { el.innerHTML = ''; img.className = 'cover'; el.appendChild(img); };
+  img.src = 'assets/' + file;
+}
+photo('s3bg', 'hero-court.webp', '#2563c9');
+photo('s6abg', '1.webp', '#5790e6');
+photo('s6bbg', '4.webp', '#0b6e97');
+
+/* ---------- dynamic pieces ---------- */
+for (let i = 0; i <= 9; i++) { const d = document.createElement('div'); d.textContent = i; d.style.height = '440px'; $('s4roll').appendChild(d); }
+['#5790e6', '#c2e029', '#0b6e97', '#ffffff'].forEach(c => { const d = document.createElement('span'); d.className = 'dot'; d.style.cssText += `background:${c};width:88px;height:88px;margin-left:-26px;border-width:3px`; $('s4dots').appendChild(d); });
+[["01","Junior Development","Fundamentals, footwork, and match play for ages 6–14."],
+ ["02","Performance Squad","High-volume training for competitive and ranked players."],
+ ["03","Adult Clinics","Small-group sessions to sharpen technique and fitness."],
+ ["04","Private Coaching","One-to-one sessions tailored to your goals and schedule."]].forEach(([n, h, d]) => {
+  const row = document.createElement('div');
+  row.className = 'row';
+  row.style.cssText = 'position:relative;display:grid;grid-template-columns:120px 760px 1fr;align-items:baseline;padding:30px 0';
+  row.innerHTML = `<i style="position:absolute;left:0;right:0;top:0;height:2px;background:var(--hairline);transform-origin:left"></i>
+    <span style="font-size:28px;color:var(--ink-soft)">${n}</span><span style="font-size:60px;letter-spacing:-.02em">${h}</span>
+    <span style="font-size:26px;color:var(--ink-soft);font-weight:400">${d}</span>`;
+  $('s5list').appendChild(row);
+});
+
+/* ---------- the timeline ---------- */
+const SC = {s1:[0,4.25], s2:[3.7,7.15], s3:[6.75,13.0], s4:[12.45,16.75], s5:[16.45,21.5], s6:[21.2,25.6], s7:[25.25,28.75], s8:[28.4,35]};
+
+function seek(t) {
+  for (const [id, [a, b]] of Object.entries(SC)) $(id).style.display = (t >= a && t < b) ? 'block' : 'none';
+
+  /* S1 — opener: words land with the voice, then the deep disc swallows the frame */
+  if (t < 4.25) {
+    const eb = seg(t, .15, 1.1); set($('s1eb'), {o: eb, y: (1 - eb) * 20, b: (1 - eb) * 8});
+    rise(W('#s1h'), t, 0, {times: [.62, .86, 1.12, 1.55, 1.8, 1.98, 2.4], dur: 1.1, dy: 90});
+    const lv = leave(null, t, 3.35, .6, {dy: -60, blur: 30, s: .94}); set($('s1h'), lv);
+    set($('s1eb'), {...lv, o: lv.o * eb});
+    const g = seg(t, 3.45, 4.2, E.inOut);
+    set($('s1disc'), {s: g * 460, o: g > 0 ? 1 : 0});
+  }
+
+  /* S2 — logo draws itself, wordmark tracks in */
+  if (t >= 3.7 && t < 7.15) {
+    $('s2').style.opacity = seg(t, 4.05, 4.15, E.lin);
+    const d1 = seg(t, 4.15, 5.25, E.inOut), d2 = seg(t, 4.55, 5.4, E.inOut), d3 = seg(t, 4.7, 5.55, E.inOut);
+    $('s2c').style.strokeDashoffset = 1 - d1; $('s2p1').style.strokeDashoffset = 1 - d2; $('s2p2').style.strokeDashoffset = 1 - d3;
+    const lg = seg(t, 4.1, 5.4); set($('s2logo'), {r: (1 - lg) * -120, s: lerp(.82, 1, lg)});
+    const wm = seg(t, 4.45, 5.9);
+    set($('s2word'), {o: clamp(wm * 1.5), b: (1 - wm) * 22, ls: lerp(.62, .22, wm) + 'em'});
+    const eb = seg(t, 5.15, 6.1); set($('s2eb'), {o: eb, y: (1 - eb) * 18, b: (1 - eb) * 8});
+    const lv = seg(t, 6.55, 7.15, E.inOut);
+    set($('s2g'), {o: 1 - lv, y: -lv * 80, b: lv * 26, s: lerp(1, 1.06, lv)});
+  }
+
+  /* S3 — hero card settles in, title lands, ball whips across */
+  if (t >= 6.75 && t < 13.0) {
+    const c = seg(t, 6.75, 7.75, E.expo);
+    $('s3card').style.borderRadius = lerp(0, 48, c) + 'px';
+    const inset = lerp(-16, 0, c);
+    const ex = seg(t, 12.35, 12.95, E.inExpo);                 // whip-pan out to the left
+    set($('s3card'), {s: lerp(1.035, 1, c), x: -ex * 2300, o: seg(t, 6.75, 7.05, E.lin)});
+    set($('s3bg'), {s: lerp(1.18, 1.04, seg(t, 6.75, 13, E.quart))});
+    const nv = seg(t, 7.4, 8.3); set($('s3nav'), {o: nv, y: (1 - nv) * -16});
+    rise(W('#s3t'), t, 7.32, {stagger: .17, dur: 1.15, dy: 150, blur: 26});
+    rise(W('#s3body'), t, 7.95, {stagger: .26, dur: .9, dy: 28, blur: 12});
+    rise(W('#s3show'), t, 10.45, {stagger: .1, dur: 1, dy: 60});
+    const gl = spring(t, 10.85, 180, 22); set($('s3glass'), {o: clamp(gl * 1.4), y: (1 - gl) * 140, s: lerp(.92, 1, gl)});
+    // tennis ball: hit from bottom-left, arcs across, exits top-right
+    const bp = seg(t, 9.55, 10.45, E.lin);
+    const bx = lerp(-160, 2100, bp), by = 980 - Math.sin(bp * Math.PI * .85) * 800 + bp * 120;
+    set($('ball'), {x: bx, y: by, r: bp * 1440, o: (bp > 0 && bp < 1) ? 1 : 0, s: lerp(1.25, .7, bp)});
+  }
+
+  /* S4 — stats card whips in, odometer rolls to 9, K+ lands */
+  if (t >= 12.45 && t < 16.75) {
+    const inn = seg(t, 12.45, 13.1, E.expo);
+    const lv = seg(t, 16.15, 16.75, E.inOut);
+    set($('s4card'), {x: (1 - inn) * 2300, s: lerp(1, .9, lv), o: 1 - lv, b: lv * 20});
+    const eb = seg(t, 12.85, 13.6); set($('s4eb'), {o: eb, y: (1 - eb) * 16});
+    $('s4line').style.transform = `scaleX(${seg(t, 12.95, 14.1, E.inOut)})`;
+    const roll = seg(t, 12.95, 14.25, E.expo);
+    $('s4roll').style.transform = `translate3d(0,${-roll * 9 * 440}px,0)`;
+    const k = seg(t, 13.95, 14.85); set($('s4k'), {o: k, x: (1 - k) * -40, b: (1 - k) * 16});
+    const cp = seg(t, 14.15, 15); set($('s4cap'), {o: cp, y: (1 - cp) * 24, b: (1 - cp) * 8});
+    [...$('s4dots').children].forEach((d, i) => { const p = spring(t, 14.35 + i * .09, 320, 18); set(d, {s: p, o: clamp(p * 3)}); });
+  }
+
+  /* S5 — programs */
+  if (t >= 16.45 && t < 21.5) {
+    $('s5').style.opacity = seg(t, 16.45, 16.75, E.lin);
+    const eb = seg(t, 16.6, 17.4); set($('s5eb'), {o: eb, y: (1 - eb) * 16});
+    rise(W('#s5h'), t, 0, {times: [16.82, 17.1, 17.9, 18.2], dur: 1.05, dy: 110, blur: 22});
+    [...$('s5list').children].forEach((row, i) => {
+      const t0 = 18.5 + i * .14;
+      const p = seg(t, t0, t0 + .95, E.expo);
+      const out = seg(t, 20.85 + i * .05, 21.35 + i * .05, E.inExpo);
+      set(row, {o: clamp(p * 1.5) * (1 - out), x: (1 - p) * 520, y: -out * 700, b: (1 - p) * 16});
+      row.firstElementChild.style.transform = `scaleX(${seg(t, t0 - .1, t0 + .8, E.inOut)})`;
+    });
+    const lv = leave(null, t, 20.8, .5, {dy: -50, blur: 26}); set($('s5h'), lv); set($('s5eb'), {...lv, o: lv.o * eb});
+  }
+
+  /* S6 — courts */
+  if (t >= 21.2 && t < 25.6) {
+    $('s6').style.opacity = seg(t, 21.2, 21.4, E.lin);
+    const eb = seg(t, 21.45, 22.2); set($('s6eb'), {o: eb, y: (1 - eb) * 16});
+    rise(W('#s6h'), t, 21.6, {stagger: .1, dur: 1, dy: 80});
+    const out = seg(t, 24.95, 25.55, E.inExpo);
+    [['s6a', 21.55], ['s6b', 21.78]].forEach(([id, t0], i) => {
+      const p = seg(t, t0, t0 + .9, E.expo);
+      const drift = (t - t0) * -14;
+      set($(id), {x: (1 - p) * 1500 + drift - out * (2400 + i * 300), s: lerp(.94, 1, p)});
+    });
+    const lv = leave(null, t, 24.95, .45, {dy: -30, blur: 22}); set($('s6h'), lv); set($('s6eb'), {...lv, o: lv.o * eb});
+  }
+
+  /* S7 — coaching, 100% ring */
+  if (t >= 25.25 && t < 28.75) {
+    $('s7').style.opacity = seg(t, 25.25, 25.5, E.lin);
+    const c = spring(t, 25.45, 200, 22); set($('s7pct'), {s: lerp(.6, 1, c), o: clamp(c * 2)});
+    const n = seg(t, 25.6, 26.9, E.expo);
+    $('s7num').textContent = Math.round(n * 100) + '%';
+    $('s7ring').style.strokeDashoffset = 1 - n;
+    rise(W('#s7h'), t, 0, {times: [25.62, 25.9, 26.22, 26.5, 26.72], dur: 1.05, dy: 100, blur: 22});
+    const lv = leave(null, t, 28.2, .5, {dy: -40, blur: 28, s: .97});
+    set($('s7h'), lv); set($('s7pct'), {...lv, s: lerp(1, .9, 1 - lv.o) * c, o: lv.o * clamp(c * 2)});
+  }
+
+  /* S8 — end card */
+  if (t >= 28.4) {
+    $('s8').style.opacity = seg(t, 28.4, 28.7, E.lin);
+    rise(W('#s8h'), t, 0, {times: [29.02, 29.3, 29.55], dur: 1.2, dy: 140, blur: 28});
+    const p = spring(t, 30.55, 260, 20); set($('s8pill'), {s: lerp(.5, 1, p), o: clamp(p * 2.5)});
+    rise(W('#s8info'), t, 31.1, {stagger: .03, dur: .9, dy: 20, blur: 10});
+    const lv = leave(null, t, 32.3, .6, {dy: -60, blur: 30, s: .96}); set($('s8main'), lv);
+    const lg = seg(t, 32.55, 33.6);
+    set($('s8logo'), {o: lg, b: (1 - lg) * 20, s: lerp(1.08, 1, lg)});
+    $('s8word').style.letterSpacing = lerp(.5, .22, lg) + 'em';
+  }
+  $('fade').style.opacity = seg(t, 34.25, 35, E.inOut);
+}
+window.seek = seek;
+window.DURATION = DURATION;
+seek(0);
+</script>
+</body>
+</html>

@@ -55,6 +55,7 @@ html,body{width:1920px;height:1080px;overflow:hidden;background:var(--background
     <img src="../assets/water-treatment-aerial.jpg" id="s2bg" class="cover" alt="" style="opacity:.22">
     <div class="cover" style="background:linear-gradient(90deg,rgba(15,47,99,.96) 35%,rgba(15,47,99,.55))"></div>
     <div class="abs" style="left:120px;top:120px"><span class="eyebrow light" id="s2eb"><i></i>technomadenviro designs</span></div>
+    <h2 class="abs lines" id="intro" data-lines="technomadenviro|designs" style="left:120px;top:300px;font-size:150px;font-weight:500;letter-spacing:-.02em;line-height:.95"></h2>
     <div class="abs" id="roll" style="left:105px;top:215px;height:400px;overflow:hidden;font-size:400px;line-height:1;letter-spacing:-.04em;font-weight:500">
       <div id="rollIn"></div>
     </div>
@@ -206,7 +207,8 @@ function seek(t) {
 
   /* 2 — treatment plants: odometer roll on each spoken word */
   if (t >= 2.72 && t < 10.6) {
-    const eb = seg(t, 3.0, .8); tf($('s2eb'), {y: (1 - eb) * 16, o: eb});
+    const eb = seg(t, 3.0, .8); tf($('s2eb'), {y: (1 - eb) * 16, o: eb * seg(t, 4.1, .4, EASE.inOut)});
+    reveal(clips.intro, t, [2.95, 3.12], {dur: .9, out: 4.05, outStagger: .06});   // said: "technomadenviro designs"
     let pos = 0;                                   // 0..3 row index, eased between cues
     CUE.plants.forEach((c, i) => { if (i) pos += seg(t, c - .12, .55, EASE.expo); });
     const first = seg(t, CUE.plants[0] - .1, .8, EASE.expo);
